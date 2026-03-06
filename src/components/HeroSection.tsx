@@ -47,7 +47,7 @@ const HeroSection = () => {
             이제 매출로 연결하세요
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 font-light max-w-4xl mx-auto break-keep whitespace-nowrap md:whitespace-normal">
-            한국 번호 인증 장벽 때문에 놓치던 외국인 고객, 이제 Kello으로 더 쉽게 연결하세요.
+            한국 번호 인증 장벽 때문에 놓치던 외국인 고객, Kello 로 쉽게 잡으세요
           </p>
 
           {/* Stats */}
