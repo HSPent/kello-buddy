@@ -12,10 +12,12 @@ import CTAFormSection from "@/components/CTAFormSection";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import Header from "@/components/Header";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <Header />
       <HeroSection />
       <ProblemSection />
       <SolutionSection />

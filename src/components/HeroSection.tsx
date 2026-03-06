@@ -17,8 +17,19 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-3xl mx-auto text-center flex flex-col items-center"
         >
+          {/* Logo */}
+          <motion.img
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+            src="/logo.png"
+            alt="Kello Logo"
+            className="h-32 md:h-48 w-auto object-contain mb-6 drop-shadow-2xl"
+            onError={(e) => e.currentTarget.style.display = 'none'}
+          />
+
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -35,7 +46,7 @@ const HeroSection = () => {
             <br className="hidden md:block" />
             이제 매출로 연결하세요
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 font-light max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-10 font-light max-w-4xl mx-auto break-keep whitespace-nowrap md:whitespace-normal">
             한국 번호 인증 장벽 때문에 놓치던 외국인 고객, 이제 Kello으로 더 쉽게 연결하세요.
           </p>
 
