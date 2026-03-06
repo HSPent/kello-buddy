@@ -16,15 +16,6 @@ const Header = () => {
         return () => subscription.unsubscribe();
     }, []);
 
-    const loginWithKakao = async () => {
-        await supabase.auth.signInWithOAuth({
-            provider: 'kakao',
-            options: {
-                redirectTo: window.location.origin
-            }
-        });
-    };
-
     const loginWithGoogle = async () => {
         await supabase.auth.signInWithOAuth({
             provider: 'google',
@@ -61,12 +52,6 @@ const Header = () => {
                         </div>
                     ) : (
                         <>
-                            <button
-                                onClick={loginWithKakao}
-                                className="flex items-center justify-center px-4 py-2 bg-[#FEE500] text-[#191919] rounded-md font-bold text-sm hover:bg-[#FEE500]/90 transition-colors shadow-sm"
-                            >
-                                카카오 로그인
-                            </button>
                             <button
                                 onClick={loginWithGoogle}
                                 className="flex items-center justify-center px-4 py-2 bg-white text-gray-800 border border-gray-300 rounded-md font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm"
