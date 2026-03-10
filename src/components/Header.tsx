@@ -55,9 +55,7 @@ const Header = () => {
         <header className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border shadow-sm">
             <div className="container mx-auto px-6 h-16 flex items-center justify-between">
                 <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
-                    {/* 사용자가 public/logo.png 경로에 이미지를 넣으면 보이도록 설정 */}
-                    <img src="/logo.png" alt="Kello Logo" className="h-10 md:h-12 w-auto object-contain fallback-text" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.classList.remove('hidden'); }} />
-                    <span className="hidden text-2xl font-black bg-clip-text text-transparent" style={{ backgroundImage: "var(--kello-gradient-hero)" }}>Kello</span>
+                    <span className="text-2xl font-black bg-clip-text text-transparent" style={{ backgroundImage: "var(--kello-gradient-hero)" }}>Kello</span>
                 </div>
                 <div className="flex items-center gap-2 md:gap-3">
                     {user ? (

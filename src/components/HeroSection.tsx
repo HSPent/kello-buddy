@@ -19,16 +19,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center flex flex-col items-center"
         >
-          {/* Logo */}
-          <motion.img
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 }}
-            src="/logo.png"
-            alt="Kello Logo"
-            className="h-32 md:h-48 w-auto object-contain mb-6 drop-shadow-2xl"
-            onError={(e) => e.currentTarget.style.display = 'none'}
-          />
+
 
           {/* Badge */}
           <motion.div
