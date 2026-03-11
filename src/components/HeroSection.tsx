@@ -47,7 +47,7 @@ const HeroSection = () => {
             외국인 손님이 매출이 됩니다
           </h1>
           <p className="text-sm sm:text-base md:text-2xl text-foreground/80 leading-relaxed mb-10 font-bold max-w-4xl mx-auto break-keep">
-            <KelloText />는 외국인 관광객이<br className="hidden md:block" />
+            <KelloText />는 외국인 관광객이 <br className="hidden md:block" />
             한국 매장을 쉽게 예약하도록 연결합니다
           </p>
 
@@ -59,7 +59,7 @@ const HeroSection = () => {
             className="inline-flex items-center gap-2 bg-gradient-accent text-accent-foreground font-bold px-6 py-4 md:px-8 md:py-5 rounded-full text-base md:text-xl shadow-kello-glow hover:scale-105 transition-transform relative z-10"
           >
             <Phone className="h-5 w-5 md:h-6 md:w-6" />
-            외국인 고객 받기 시작하기
+            외국인 고객 받고 매출 올리기
           </motion.button>
 
           {/* Post-it Note Promotion */}
