@@ -134,16 +134,21 @@ const SurveyDialog = ({ open, onOpenChange, basicInfo, onComplete }: SurveyDialo
         raw_payload: form
       };
 
-      console.log('partner payload:', payload);
+      console.log('partner payload:', JSON.stringify(payload, null, 2));
 
       const { error } = await supabase
         .from('partner_applications')
         .insert([payload]);
 
-      console.log('insert error:', error);
-
       if (error) {
-        alert(`저장 실패: ${error.message}`);
+        // DB 제약 위반 상세 정보 출력
+        console.error('insert error full:', {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+          hint: error.hint,
+        });
+        alert(`저장 실패\n메시지: ${error.message}\n코드: ${error.code}\n상세: ${error.details}\n힌트: ${error.hint}`);
         throw error;
       }
 
