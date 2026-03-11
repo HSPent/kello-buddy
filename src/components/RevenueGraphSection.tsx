@@ -20,7 +20,7 @@ const graphData = [
 
 const RevenueGraphSection = () => {
   return (
-    <section className="py-24 bg-kello-blue-light/50 relative overflow-hidden">
+    <section className="py-24 bg-spring-yellow relative overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,10 +29,10 @@ const RevenueGraphSection = () => {
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">Revenue Growth</span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 leading-tight break-keep">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep">
             외국인 고객 몇 명만 늘어도<br />매출이 이렇게 증가합니다
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground font-medium mb-2">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium mb-2">
             평균 객단가 8만원 기준
           </p>
         </motion.div>
@@ -41,7 +41,7 @@ const RevenueGraphSection = () => {
           <h3 className="text-center font-bold text-muted-foreground mb-8">
             외국인 고객 증가 vs 예상 매출 증가
           </h3>
-          <div className="flex justify-around items-end h-72 md:h-96 w-full max-w-2xl mx-auto gap-4 md:gap-8 pt-8 px-4 border-b-2 border-border/50 relative">
+          <div className="flex justify-around items-end h-64 sm:h-72 md:h-96 w-full max-w-2xl mx-auto gap-2 sm:gap-4 md:gap-8 pt-8 px-2 sm:px-4 border-b-2 border-border/50 relative">
             {graphData.map((d, i) => (
               <div key={i} className="flex flex-col items-center justify-end h-full w-full group">
                 <motion.div
@@ -51,12 +51,12 @@ const RevenueGraphSection = () => {
                   transition={{ duration: 1, delay: i * 0.2, ease: "easeOut" }}
                   className="w-full bg-gradient-to-t from-primary/80 to-accent rounded-t-lg relative shadow-kello flex items-end justify-center pb-4 min-h-[50px] transition-transform group-hover:scale-[1.02]"
                 >
-                  <span className="absolute -top-10 font-black text-xl text-foreground break-keep text-center w-full">
+                  <span className="absolute -top-8 sm:-top-10 font-black text-sm sm:text-base md:text-xl text-foreground break-keep text-center w-full">
                     {d.revenue}
                   </span>
                 </motion.div>
-                <div className="mt-4 text-center">
-                  <span className="font-bold text-base md:text-lg block text-foreground break-keep">{d.guests}</span>
+                <div className="mt-3 sm:mt-4 text-center">
+                  <span className="font-bold text-xs sm:text-sm md:text-lg block text-foreground break-keep">{d.guests}</span>
                 </div>
               </div>
             ))}

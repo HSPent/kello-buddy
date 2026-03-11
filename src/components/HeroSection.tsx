@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { Globe, Phone } from "lucide-react";
+import { Globe, Phone, TicketPercent } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="bg-slate-950 flex flex-col w-full">
+    <section className="bg-spring-pink flex flex-col w-full relative">
       {/* Top Video Area */}
       <div className="relative w-full h-[45vh] lg:h-[55vh]">
         <video
@@ -20,7 +20,7 @@ const HeroSection = () => {
           <img src={heroBg} alt="한국 거리를 즐기는 외국인 관광객들" className="w-full h-full object-cover" />
         </video>
         {/* Soft gradient to blend with the dark background below */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(350_40%_98%)] via-white/20 to-transparent" />
       </div>
 
       {/* Content Area Below the Video */}
@@ -36,30 +36,62 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-2 mb-8"
+            className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 mb-8 shadow-sm"
           >
-            <Globe className="h-4 w-4 text-kello-gold" />
-            <span className="text-sm font-medium text-primary-foreground/90">사장님 전용 파트너 제휴</span>
+            <Globe className="h-4 w-4 text-primary" />
+            <span className="text-sm font-bold text-primary">사장님 전용 파트너 제휴</span>
           </motion.div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight text-gradient-hero mb-6 break-keep drop-shadow-md">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight text-foreground mb-6 break-keep drop-shadow-md">
             외국인 손님이 매출이 됩니다
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl text-primary-foreground/90 leading-relaxed mb-10 font-medium max-w-4xl mx-auto break-keep">
+          <p className="text-base sm:text-lg md:text-2xl text-foreground/80 leading-relaxed mb-10 font-bold max-w-4xl mx-auto break-keep">
             KELLO는 외국인 관광객이<br className="hidden md:block" />
             한국 매장을 쉽게 예약하도록 연결합니다
           </p>
 
-          <motion.a
-            href="#cta-form"
+          <motion.button
+            onClick={() => window.dispatchEvent(new Event('open-promo-popup'))}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="inline-flex items-center gap-2 bg-gradient-accent text-accent-foreground font-bold px-8 py-5 rounded-full text-xl shadow-kello-glow hover:scale-105 transition-transform"
+            className="inline-flex items-center gap-2 bg-gradient-accent text-accent-foreground font-bold px-6 py-4 md:px-8 md:py-5 rounded-full text-base md:text-xl shadow-kello-glow hover:scale-105 transition-transform relative z-10"
           >
-            <Phone className="h-6 w-6" />
+            <Phone className="h-5 w-5 md:h-6 md:w-6" />
             외국인 고객 받기 시작하기
-          </motion.a>
+          </motion.button>
+
+          {/* Post-it Note Promotion */}
+          <motion.div
+            initial={{ opacity: 0, y: 50, rotate: -5 }}
+            animate={{ opacity: 1, y: 0, rotate: 2 }}
+            transition={{ delay: 1.2, type: "spring", stiffness: 100 }}
+            className="mt-16 w-full max-w-sm bg-[#fef08a] p-6 md:p-8 shadow-[5px_5px_15px_rgba(0,0,0,0.1)] relative border border-[#fde047] origin-top text-left"
+            style={{ 
+              borderRadius: "2px 2px 20px 5px", // Slight curl effect
+            }}
+          >
+            {/* Post-it Tape */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-white/40 backdrop-blur-sm shadow-sm rotate-[-3deg]" />
+            
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 mb-4 text-center sm:text-left">
+              <TicketPercent className="h-6 w-6 sm:h-8 sm:w-8 text-amber-600 hidden sm:block" />
+              <h3 className="text-xl sm:text-2xl font-black text-amber-900 break-keep leading-tight drop-shadow-sm">
+                2026년은 KELLO 초기 파트너에게<br className="hidden sm:block" />
+                <span className="text-red-500 border-b-2 border-red-500 font-extrabold mt-1 inline-block text-2xl sm:text-3xl">무료로 제공합니다.</span>
+              </h3>
+            </div>
+            
+            <p className="text-amber-900/90 font-bold leading-relaxed break-keep mb-6 text-base md:text-lg border-t border-amber-900/20 pt-4">
+              플랫폼 초기 확장을 위해<br />
+              2026년 동안은 제휴 매장이<br />
+              KELLO 서비스를 무료로 사용할 수 있습니다.
+            </p>
+            <p className="text-amber-900 font-black break-keep text-lg md:text-xl drop-shadow-sm">
+              외국인 고객을 먼저 만나보는 기회,<br />
+              지금 참여하세요! ✨
+            </p>
+          </motion.div>
         </motion.div>
       </div>
     </section>

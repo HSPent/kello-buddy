@@ -30,7 +30,7 @@ const solutions = [
 
 const SolutionSection = () => {
   return (
-<section className="py-24 bg-background relative overflow-hidden">
+<section className="py-24 bg-spring-peach relative overflow-hidden">
       <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.1) 0%, transparent 50%)" }} />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -40,7 +40,7 @@ const SolutionSection = () => {
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">Solution</span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 leading-tight break-keep">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep">
             KELLO가 외국인 고객과<br />사장님을 연결해드립니다
           </h2>
         </motion.div>
@@ -58,8 +58,8 @@ const SolutionSection = () => {
               <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${s.gradient} mb-5 shadow-sm`}>
                 <s.icon className="h-6 w-6 text-primary-foreground" />
               </div>
-              <h3 className="text-lg font-black text-foreground mb-3 leading-snug break-keep">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed font-medium break-keep">{s.desc}</p>
+              <h3 className="text-xl sm:text-2xl font-black text-foreground mb-3">{s.title}</h3>
+              <p className="text-foreground/80 font-bold leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>

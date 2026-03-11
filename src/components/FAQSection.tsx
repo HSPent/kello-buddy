@@ -31,7 +31,7 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-24 bg-spring-mint relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 10% 20%, hsl(var(--kello-coral) / 0.04) 0%, transparent 40%), radial-gradient(circle at 90% 80%, hsl(var(--primary) / 0.04) 0%, transparent 40%)" }} />
       <div className="container mx-auto px-6">
         <motion.div
@@ -41,7 +41,7 @@ const FAQSection = () => {
           className="text-center mb-16"
         >
           <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">FAQ</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground break-keep">
             자주 묻는 질문
           </h2>
         </motion.div>

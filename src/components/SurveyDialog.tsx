@@ -70,9 +70,8 @@ const SurveyDialog = ({ open, onOpenChange }: SurveyDialogProps) => {
           <div className="flex flex-col items-center py-8 text-center gap-4">
             <CheckCircle className="h-16 w-16 text-primary" />
             <DialogTitle className="text-2xl font-bold">감사합니다!</DialogTitle>
-            <DialogDescription className="text-muted-foreground">
-              설문이 성공적으로 제출되었습니다.<br />
-              소중한 의견을 반영하여 더 나은 서비스를 제공하겠습니다.
+            <DialogDescription className="text-muted-foreground text-lg mt-2">
+              소중한 의견을 반영하여 곧 연락드리겠습니다.
             </DialogDescription>
             <button
               onClick={handleClose}

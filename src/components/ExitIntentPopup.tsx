@@ -17,13 +17,27 @@ const ExitIntentPopup = () => {
 
   useEffect(() => {
     if (!sessionStorage.getItem(SESSION_KEY)) {
-      const timer = setTimeout(() => {
-        sessionStorage.setItem(SESSION_KEY, "true");
-        setOpen(true);
-      }, 10000); // Popup appears after 10 seconds
+      const handleScroll = () => {
+        const scrolled = window.scrollY;
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        
+        // 50% 스크롤 시 팝업 띄우기
+        if (totalHeight > 0 && scrolled / totalHeight >= 0.5) {
+          sessionStorage.setItem(SESSION_KEY, "true");
+          setOpen(true);
+          window.removeEventListener("scroll", handleScroll);
+        }
+      };
 
-      return () => clearTimeout(timer);
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
     }
+  }, []);
+
+  useEffect(() => {
+    const handleOpenPromoPopup = () => setOpen(true);
+    window.addEventListener("open-promo-popup", handleOpenPromoPopup);
+    return () => window.removeEventListener("open-promo-popup", handleOpenPromoPopup);
   }, []);
 
   const handleRegister = () => {

@@ -29,7 +29,7 @@ const CTAFormSection = () => {
   };
 
   return (
-    <section id="cta-form" className="py-24 bg-kello-blue-light relative overflow-hidden">
+    <section id="cta-form" className="py-24 bg-spring-yellow relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-kello-gold/5 rounded-full blur-3xl translate-y-1/3" />
       <div className="container mx-auto px-6">
@@ -51,23 +51,23 @@ const CTAFormSection = () => {
 
           <form onSubmit={handleSubmit} className="glass-card rounded-3xl p-8 md:p-10 space-y-5 relative z-10">
             <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">업체명</label>
+              <label className="block text-base font-semibold text-foreground mb-2">업체명</label>
               <input
                 type="text"
                 placeholder="예: 서울뷰티살롱"
                 value={form.businessName}
                 onChange={(e) => setForm({ ...form, businessName: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-sm"
+                className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-base"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">지역</label>
+                <label className="block text-base font-semibold text-foreground mb-2">지역</label>
                 <select
                   value={form.region}
                   onChange={(e) => setForm({ ...form, region: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-sm"
+                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-base"
                 >
                   <option value="">선택</option>
                   {regions.map((r) => (
@@ -76,11 +76,11 @@ const CTAFormSection = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">업종</label>
+                <label className="block text-base font-semibold text-foreground mb-2">업종</label>
                 <select
                   value={form.category}
                   onChange={(e) => setForm({ ...form, category: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-sm"
+                  className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-base"
                 >
                   <option value="">선택</option>
                   {categories.map((c) => (
@@ -91,24 +91,24 @@ const CTAFormSection = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">연락처</label>
+              <label className="block text-base font-semibold text-foreground mb-2">연락처</label>
               <input
                 type="tel"
                 placeholder="010-0000-0000"
                 value={form.contact}
                 onChange={(e) => setForm({ ...form, contact: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-sm"
+                className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-base"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">이메일 주소</label>
+              <label className="block text-base font-semibold text-foreground mb-2">이메일 주소</label>
               <input
                 type="email"
                 placeholder="example@email.com"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-sm"
+                className="w-full px-4 py-3 rounded-xl border border-input bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-transparent outline-none transition-all text-base"
               />
             </div>
 
