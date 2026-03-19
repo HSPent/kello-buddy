@@ -250,8 +250,8 @@ const KBeautyTrendSection = () => {
 
                       {/* ── 6,000억 label — centered on x=220, y=50 ── */}
                       {/* dashed connector line from label bottom to circle top */}
-                      <line x1="220" y1="14" x2="220" y2="43" stroke="#fda4af" strokeWidth="1.5" strokeDasharray="3,2" />
-                      <foreignObject x="150" y="-40" width="140" height="30">
+                      <line x1="220" y1="25" x2="220" y2="43" stroke="#fda4af" strokeWidth="1.5" strokeDasharray="3,2" />
+                      <foreignObject x="150" y="-22" width="140" height="30">
                         <div style={{ display: "flex", justifyContent: "center" }}>
                           <div style={{
                             background: "#ffe4e6",
