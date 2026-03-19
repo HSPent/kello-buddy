@@ -49,26 +49,26 @@ const FloatingPromo = () => {
               </button>
 
               {/* Unified Event Card */}
-              <div className="bg-white rounded-[2rem] shadow-2xl border-2 border-primary/10 overflow-hidden flex flex-col w-[280px] sm:w-[300px] shadow-primary/10 group">
+              <div className="bg-white rounded-[1.5rem] shadow-2xl border border-primary/10 overflow-hidden flex flex-col w-[220px] sm:w-[240px] shadow-primary/10 group">
                 {/* Upper Section: Coffee Coupon (Click to open promo) */}
                 <button
                   onClick={handleOpenPromo}
-                  className="p-4 flex items-center gap-4 text-left hover:bg-primary/5 transition-colors relative"
+                  className="p-3 flex items-center gap-3 text-left hover:bg-primary/5 transition-colors relative"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none" />
-                  <div className="relative">
+                  <div className="relative shrink-0">
                     <img 
                       src="/event-coffee.png" 
                       alt="커피 이벤트" 
-                      className="w-16 h-16 rounded-2xl object-contain bg-secondary/50 shadow-sm border border-white/50"
+                      className="w-12 h-12 rounded-xl object-contain bg-secondary/50 shadow-sm border border-white/50"
                     />
-                    <div className="absolute -top-2 -right-2 bg-primary text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm">
+                    <div className="absolute -top-1.5 -right-1.5 bg-primary text-white text-[8px] font-black px-1.5 py-0.5 rounded-full shadow-sm">
                       BONUS
                     </div>
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] font-black text-primary uppercase tracking-tighter mb-1 font-sans">Special Event</p>
-                    <h4 className="text-base sm:text-lg font-black text-foreground leading-tight">
+                    <p className="text-[8px] font-black text-primary uppercase tracking-tighter mb-0.5 font-sans">Special Event</p>
+                    <h4 className="text-xs sm:text-sm font-black text-foreground leading-tight">
                       지금 신청하면<br />커피 쿠폰 증정! 🎁
                     </h4>
                   </div>
@@ -77,10 +77,10 @@ const FloatingPromo = () => {
                 {/* Lower Section: Survey Button (Now integrated) */}
                 <button
                   onClick={handleSurveyOpen}
-                  className="bg-foreground text-background py-4 px-6 flex items-center justify-center gap-2 hover:bg-foreground/90 transition-all active:scale-95 border-t border-white/10"
+                  className="bg-foreground text-background py-3 px-4 flex items-center justify-center gap-2 hover:bg-foreground/90 transition-all active:scale-95 border-t border-white/10"
                 >
-                  <ClipboardList className="h-5 w-5 text-primary animate-pulse" />
-                  <span className="text-sm font-black tracking-tight">설문조사 참여하고 커피받기</span>
+                  <ClipboardList className="h-4 w-4 text-primary animate-pulse" />
+                  <span className="text-[11px] font-black tracking-tight">설문 참여하고 커피받기</span>
                 </button>
               </div>
             </motion.div>
