@@ -52,8 +52,8 @@ const stats = [
             <div className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-primary">15%</div>
           </div>
           <div className="text-left">
-            <p className="text-[10px] font-bold text-muted-foreground">전체 관광객 중 비중</p>
-            <p className="text-lg font-black text-primary">약 15%</p>
+            <p className="text-xl font-black text-muted-foreground">전체 관광객 중 비중</p>
+            <p className="text-2xl font-black text-primary">약 15%</p>
           </div>
         </div>
       </div>
@@ -104,10 +104,10 @@ const KBeautyTrendSection = () => {
         </ScrollReveal>
 
         {/* 3 Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-6xl mx-auto items-stretch">
           {stats.map((s, i) => (
             <ScrollReveal key={i} delay={i * 0.15} direction="up" width="100%">
-              <div className="h-full bg-white/40 backdrop-blur-md rounded-[2rem] p-8 border border-white/60 shadow-xl flex flex-col items-center text-center group hover:-translate-y-1 transition-transform">
+              <div className="h-full bg-white/40 backdrop-blur-md rounded-[2rem] p-8 border border-white/60 shadow-xl flex flex-col items-center text-center group hover:-translate-y-1 transition-transform min-h-[280px]">
                 <h3 className="text-base sm:text-lg font-black text-foreground/80 mb-2">{s.title}</h3>
                 <p className="text-xl sm:text-2xl font-black text-rose-500 mb-1">{s.mainVal}</p>
                 {s.subTitle && <p className="text-xs font-bold text-muted-foreground">{s.subTitle}</p>}
