@@ -119,137 +119,200 @@ const KBeautyTrendSection = () => {
           ))}
         </div>
 
-        {/* Charts Container */}
-        <div className="max-w-6xl mx-auto bg-white/50 backdrop-blur-md rounded-[2.5rem] p-8 sm:p-12 border border-white/70 shadow-2xl overflow-hidden">
-          <div className="text-center mb-12">
-            <h3 className="text-xl sm:text-2xl font-black text-foreground">미용·뷰티 이용객 및 매출 성장 추이</h3>
-            <div className="w-12 h-1 bg-rose-200 mx-auto mt-2 rounded-full" />
-          </div>
+        {/* Charts Container — Large, image-faithful */}
+        <ScrollReveal width="100%" delay={0.2}>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <h3 className="text-2xl sm:text-3xl font-black text-foreground">미용·뷰티 이용객 및 매출 성장 추이</h3>
+              <div className="w-16 h-1 bg-rose-300 mx-auto mt-3 rounded-full" />
+            </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
-            {/* Left Column: Bar Chart */}
-            <div className="flex flex-col gap-6">
-              <div className="flex justify-between items-center px-2">
-                <span className="text-xs font-bold text-muted-foreground">미용 뷰티 이용객 수 (만 명)</span>
-              </div>
-              <div className="relative h-64 flex items-end justify-between px-4 pb-6 border-b border-rose-100">
-                {[
-                  { yr: "2021", val: 50, h: "30%", valTxt: "" },
-                  { yr: "2022", val: 150, h: "50%", valTxt: "150만 명", active: true },
-                  { yr: "2023", val: 210, h: "70%", valTxt: "210만 명", active: true },
-                  { yr: "2024", val: 250, h: "90%", valTxt: "250만 명", highlight: true }
-                ].map((bar, i) => (
-                  <div key={i} className="flex flex-col items-center w-1/5 group relative">
-                    {bar.valTxt && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 1 + i * 0.1 }}
-                        className={`absolute -top-10 whitespace-nowrap px-2 py-1 rounded-lg text-[10px] font-black shadow-sm ${bar.highlight ? 'bg-rose-500 text-white' : 'bg-rose-100 text-rose-500'}`}
-                      >
-                        {bar.valTxt}
-                        <div className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 ${bar.highlight ? 'bg-rose-500' : 'bg-rose-100'}`} />
-                      </motion.div>
-                    )}
-                    <motion.div
-                      initial={{ height: 0 }}
-                      whileInView={{ height: bar.h }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.2 + i * 0.1 }}
-                      className={`w-full rounded-t-xl shadow-lg transition-transform group-hover:scale-105 ${bar.highlight ? 'bg-gradient-to-t from-rose-600 to-rose-400' : 'bg-rose-200'}`}
-                    />
-                    <span className="absolute -bottom-6 text-[10px] font-bold text-muted-foreground">{bar.yr}</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+              {/* ── LEFT: Bar Chart ── */}
+              <div className="bg-white/50 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-white/70 shadow-xl">
+                {/* No title above per user request */}
+                <div className="relative h-80 sm:h-96 mt-10">
+                  {/* Y-axis labels */}
+                  {["300만", "200만", "150만", "100만", "50만", "0"].map((v, i) => (
+                    <div key={v} className="absolute left-0 text-xs font-bold text-rose-300" style={{ bottom: `${(i === 0 ? 100 : i === 1 ? 66 : i === 2 ? 50 : i === 3 ? 33 : i === 4 ? 16 : 0)}%`, transform: 'translateY(50%)' }}>
+                      {v}
+                    </div>
+                  ))}
+
+                  {/* Grid lines */}
+                  {[0, 16, 33, 50, 66, 100].map(p => (
+                    <div key={p} className="absolute w-full border-t border-dashed border-rose-100" style={{ bottom: `${p}%`, left: '2rem' }} />
+                  ))}
+
+                  {/* Bars */}
+                  <div className="absolute inset-0 flex items-end justify-around pl-10 pb-8 gap-3">
+                    {[
+                      { yr: "2021", pct: 40, valTag: null },
+                      { yr: "2022", pct: 55, valTag: { text: "150만 명", highlight: false } },
+                      { yr: "2023", pct: 72, valTag: { text: "210만 명", highlight: false } },
+                      { yr: "2024", pct: 90, valTag: { text: "250만 명", highlight: true } },
+                    ].map((bar, i) => (
+                      <div key={i} className="flex-1 flex flex-col items-center h-full justify-end relative">
+                        {/* Values above bars (sticker style) */}
+                        {bar.valTag && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.8 + i * 0.1 }}
+                            className={`absolute bottom-[calc(100%*var(--p)/100+2rem)] whitespace-nowrap text-sm font-black px-3 py-1 rounded-xl shadow-md z-10 ${bar.valTag.highlight ? 'bg-rose-600 text-white text-base' : 'bg-rose-100 text-rose-600'}`}
+                            style={{ '--p': bar.pct } as React.CSSProperties}
+                          >
+                            {bar.valTag.text}
+                            <div className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rotate-45 ${bar.valTag.highlight ? 'bg-rose-600' : 'bg-rose-100'}`} />
+                          </motion.div>
+                        )}
+                        <motion.div
+                          initial={{ height: 0 }}
+                          whileInView={{ height: `${bar.pct}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, delay: 0.2 + i * 0.15, ease: "easeOut" }}
+                          className={`w-full max-w-[60px] rounded-t-2xl shadow-lg ${i === 3 ? 'bg-gradient-to-t from-rose-700 via-rose-500 to-rose-400' : 'bg-gradient-to-t from-rose-300 to-rose-200'}`}
+                        />
+                        <span className="absolute -bottom-6 text-sm font-bold text-muted-foreground">{bar.yr}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-                {/* Y-axis helpers */}
-                <div className="absolute left-0 h-full flex flex-col justify-between text-[8px] font-bold text-rose-200 -ml-8">
-                  <span>300만</span><span>200만</span><span>150만</span><span>100만</span><span>50만</span><span>0</span>
                 </div>
               </div>
-            </div>
 
-            {/* Right Column: Line Chart */}
-            <div className="flex flex-col gap-6">
-              <div className="flex justify-between items-center px-2">
-                <span className="text-xs font-bold text-muted-foreground">미용 시술 총 매출액 (백만 원)</span>
-              </div>
-              <div className="relative h-64 border-b border-rose-100">
-                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full overflow-visible">
-                  {/* Grid Lines */}
-                  {[0, 20, 40, 60, 80].map(y => (
-                    <line key={y} x1="0" y1={y} x2="100" y2={y} stroke="#FFE4E9" strokeWidth="0.5" strokeDasharray="2,2" />
-                  ))}
-                  
-                  {/* Path Area */}
-                  <motion.path
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    whileInView={{ pathLength: 1, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 2 }}
-                    d="M 10 90 L 30 70 L 60 40 L 90 20 L 90 100 L 10 100 Z"
-                    fill="url(#trendGradient)"
-                    className="opacity-30"
-                  />
-                  {/* Main Line */}
-                  <motion.path
-                    initial={{ pathLength: 0 }}
-                    whileInView={{ pathLength: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 2 }}
-                    d="M 10 90 L 30 70 L 60 40 L 90 20"
-                    fill="none"
-                    stroke="#9F1239"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  {/* Data Points */}
-                  {[
-                    { x: 10, y: 90, val: "3,000만 명" },
-                    { x: 30, y: 70, val: "" },
-                    { x: 60, y: 40, val: "6,750만 명" },
-                    { x: 90, y: 20, val: "7,000만 명", highlight: true }
-                  ].map((p, i) => (
-                    <g key={i}>
-                      <circle cx={p.x} cy={p.y} r="2" fill="white" stroke="#9F1239" strokeWidth="1" />
-                      {p.val && (
-                        <foreignObject x={p.x - 15} y={p.y - 12} width="40" height="15">
-                           <div className={`px-1 py-0.5 rounded text-[4px] font-black text-center shadow-sm ${p.highlight ? 'bg-rose-800 text-white' : 'bg-rose-700 text-white'}`}>
-                            {p.val}
-                           </div>
-                        </foreignObject>
-                      )}
-                    </g>
-                  ))}
-                  <defs>
-                    <linearGradient id="trendGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#FB7185" />
-                      <stop offset="100%" stopColor="transparent" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                {/* Years Labels */}
-                <div className="absolute -bottom-6 w-full flex justify-between px-6 text-[10px] font-bold text-muted-foreground">
-                  <span>2021</span><span>2022</span><span>2023</span><span>2024</span>
+              {/* ── RIGHT: Line / Area Chart ── */}
+              <div className="bg-white/50 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-white/70 shadow-xl">
+                <div className="flex justify-end mb-2">
+                  <span className="text-xs font-bold text-muted-foreground">미용 시술 총 매출액 (억 원)</span>
                 </div>
-                {/* Y Axis Guide */}
-                <div className="absolute right-[-45px] h-full flex flex-col justify-between text-[8px] font-bold text-rose-300">
-                  <span>7,000만</span><span>6,000만</span><span>5,000만</span><span>4,000만</span><span>3,000만</span><span>1,000만</span>
+                <div className="relative h-80 sm:h-96">
+                  {/* Y-axis labels LEFT */}
+                  {["7000", "6000", "5000", "4000", "3000", "2000", "1000", "0"].map((v, i) => (
+                    <div key={v} className="absolute left-0 text-[10px] font-bold text-rose-300" style={{ bottom: `${100 - i * 100 / 7}%`, transform: 'translateY(50%)' }}>
+                      {v}
+                    </div>
+                  ))}
+                  {/* Y-axis labels RIGHT */}
+                  {["7,000억", "6,000억", "5,000억", "4,000억", "3,000억", "2,000억", "1,000억", "0"].map((v, i) => (
+                    <div key={v} className="absolute right-0 text-[9px] font-bold text-rose-200" style={{ bottom: `${100 - i * 100 / 7}%`, transform: 'translateY(50%)' }}>
+                      {v}
+                    </div>
+                  ))}
+
+                  {/* SVG Chart */}
+                  <div className="absolute inset-0 px-8">
+                    <svg viewBox="0 0 300 200" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#f43f5e" stopOpacity="0.35" />
+                          <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+                        </linearGradient>
+                      </defs>
+                      {/* Grid */}
+                      {[0, 28, 57, 86, 114, 143, 172, 200].map(y => (
+                        <line key={y} x1="0" y1={y} x2="300" y2={y} stroke="#FFE4E9" strokeWidth="0.5" strokeDasharray="4,4" />
+                      ))}
+                      {/* Area Fill */}
+                      <motion.path
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 2 }}
+                        d="M 20 185 C 60 175, 80 160, 100 130 C 130 95, 170 65, 220 50 L 280 30 L 280 200 L 20 200 Z"
+                        fill="url(#areaGrad)"
+                      />
+                      {/* Line */}
+                      <motion.path
+                        initial={{ pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 2.5, ease: "easeOut" }}
+                        d="M 20 185 C 60 175, 80 160, 100 130 C 130 95, 170 65, 220 50 L 280 30"
+                        fill="none"
+                        stroke="#9F1239"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      {/* Data Points */}
+                      {[
+                        { x: 20, y: 185, label: null },
+                        { x: 100, y: 130, label: null },
+                        { x: 220, y: 50, label: "6,000억 원" },
+                        { x: 280, y: 30, label: "7,000억 원", highlight: true },
+                      ].map((p, i) => (
+                        <motion.circle
+                          key={i}
+                          cx={p.x} cy={p.y} r="5"
+                          fill="white" stroke="#9F1239" strokeWidth="2"
+                          initial={{ scale: 0 }} whileInView={{ scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 1 + i * 0.2 }}
+                        />
+                      ))}
+                    </svg>
+
+                    {/* Floating Labels */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 1.8 }}
+                      className="absolute bg-rose-100 text-rose-600 text-xs font-black px-3 py-1.5 rounded-xl shadow-lg"
+                      style={{ left: '67%', top: '20%' }}
+                    >
+                      6,000억 원
+                      <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rotate-45 bg-rose-100" />
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 2.1 }}
+                      className="absolute bg-rose-700 text-white text-xs font-black px-3 py-1.5 rounded-xl shadow-xl"
+                      style={{ right: '5%', top: '8%' }}
+                    >
+                      7,000억 원
+                      <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rotate-45 bg-rose-700" />
+                    </motion.div>
+
+                    {/* Kello 추가 수익 + Arrow annotation */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 2.4 }}
+                      className="absolute flex flex-col items-center"
+                      style={{ left: '53%', top: '45%' }}
+                    >
+                      <div className="text-rose-700 text-xs font-black text-center leading-tight mb-1">
+                        Kello<br />추가 수익
+                      </div>
+                      <div className="text-rose-600 text-2xl animate-bounce">↑</div>
+                    </motion.div>
+                  </div>
+
+                  {/* X Axis */}
+                  <div className="absolute bottom-0 w-full flex justify-between px-8 text-sm font-bold text-muted-foreground">
+                    <span>2021</span><span>2022</span><span>2023</span><span>2024</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
-        {/* Floating Flowers (Bottom Corner decoration) */}
-        <div className="relative mt-20 flex justify-center opacity-10 grayscale-0 pointer-events-none text-4xl">
-           <div className="animate-pulse">🌸</div>
-           <div className="absolute -top-10 left-1/4 animate-bounce">🌸</div>
-           <div className="absolute top-10 right-1/4 animate-bounce delay-75">🌸</div>
+        {/* Decorative bottom */}
+        <div className="mt-16 flex justify-center gap-6 opacity-15 pointer-events-none text-3xl">
+          <span className="animate-pulse">🌸</span>
+          <span className="animate-bounce">🌸</span>
+          <span className="animate-pulse delay-75">🌸</span>
         </div>
       </div>
     </section>
+
   );
 };
 
