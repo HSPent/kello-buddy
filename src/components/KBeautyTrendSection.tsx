@@ -254,25 +254,27 @@ const KBeautyTrendSection = () => {
                       ))}
                     </svg>
 
-                    {/* Floating Labels */}
+                    {/* Floating Labels — anchored to SVG data points */}
+                    {/* 6,000억 label → above point at ~73% from left, ~25% from top */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 1.8 }}
-                      className="absolute bg-rose-100 text-rose-600 text-xs font-black px-3 py-1.5 rounded-xl shadow-lg"
-                      style={{ left: '67%', top: '20%' }}
+                      className="absolute bg-rose-100 text-rose-600 text-xs font-black px-3 py-1.5 rounded-xl shadow-lg whitespace-nowrap"
+                      style={{ left: '65%', top: '18%', transform: 'translateX(-50%)' }}
                     >
                       6,000억 원
                       <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rotate-45 bg-rose-100" />
                     </motion.div>
+                    {/* 7,000억 label → above point at ~93% from left, ~10% from top */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 2.1 }}
-                      className="absolute bg-rose-700 text-white text-xs font-black px-3 py-1.5 rounded-xl shadow-xl"
-                      style={{ right: '5%', top: '8%' }}
+                      className="absolute bg-rose-700 text-white text-xs font-black px-3 py-1.5 rounded-xl shadow-xl whitespace-nowrap"
+                      style={{ left: '88%', top: '4%', transform: 'translateX(-50%)' }}
                     >
                       7,000억 원
                       <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rotate-45 bg-rose-700" />
@@ -288,7 +290,7 @@ const KBeautyTrendSection = () => {
                       style={{ left: '53%', top: '45%' }}
                     >
                       <div className="text-rose-700 text-xs font-black text-center leading-tight mb-1">
-                        Kello<br />추가 수익
+                        Kello와<br />추가 수익
                       </div>
                       <div className="text-rose-600 text-2xl animate-bounce">↑</div>
                     </motion.div>
