@@ -123,10 +123,10 @@ const CTAFormSection = () => {
 
             <button
               type="submit"
-              className="w-full bg-gradient-accent text-accent-foreground font-bold py-5 rounded-xl text-xl shadow-kello hover:scale-[1.02] transition-transform flex items-center justify-center gap-2 mt-4"
+              className="w-full bg-gradient-accent text-accent-foreground font-bold py-5 rounded-xl text-xl shadow-kello-glow hover:scale-[1.02] transition-transform flex items-center justify-center gap-2 mt-4"
             >
               <Send className="h-6 w-6" />
-              제휴 문의하기
+              외국인 고객 받고 매출 올리기
             </button>
           </form>
 
