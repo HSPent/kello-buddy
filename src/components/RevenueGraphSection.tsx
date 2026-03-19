@@ -34,35 +34,23 @@ const RevenueGraphSection = () => {
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep">
             외국인 고객 몇 명만 늘어도<br className="hidden sm:block" />매출이 이렇게 증가합니다
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium mb-2">
-            평균 객단가 8만원 기준
-          </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto glass-card rounded-3xl p-8 md:p-12 relative z-10">
-          <h3 className="text-center font-bold text-muted-foreground mb-8">
-            외국인 고객 증가 vs 예상 매출 증가
-          </h3>
-          <div className="flex justify-around items-end h-64 sm:h-72 md:h-96 w-full max-w-2xl mx-auto gap-2 sm:gap-4 md:gap-8 pt-8 px-2 sm:px-4 border-b-2 border-border/50 relative">
-            {graphData.map((d, i) => (
-              <div key={i} className="flex flex-col items-center justify-end h-full w-full group">
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  whileInView={{ height: d.height, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: i * 0.2, ease: "easeOut" }}
-                  className="w-full bg-gradient-to-t from-primary/80 to-accent rounded-t-lg relative shadow-kello flex items-end justify-center pb-4 min-h-[50px] transition-transform group-hover:scale-[1.02]"
-                >
-                  <span className="absolute -top-8 sm:-top-10 font-black text-sm sm:text-base md:text-xl text-foreground break-keep text-center w-full">
-                    {d.revenue}
-                  </span>
-                </motion.div>
-                <div className="mt-3 sm:mt-4 text-center">
-                  <span className="font-bold text-xs sm:text-sm md:text-lg block text-foreground break-keep">{d.guests}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="max-w-4xl mx-auto glass-card rounded-3xl p-4 sm:p-8 md:p-12 relative z-10 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative rounded-2xl overflow-hidden shadow-2xl border border-primary/10"
+          >
+            <img 
+              src="/revenue-graph.png" 
+              alt="매출 증가 그래프" 
+              className="w-full h-auto object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
+          </motion.div>
         </div>
       </div>
     </section>
