@@ -45,20 +45,21 @@ const RevenueGraphSection = () => {
           </div>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto glass-card rounded-[2.5rem] p-4 sm:p-8 md:p-12 relative z-10 overflow-hidden group">
+        <div className="w-full relative z-10 overflow-hidden group">
           <ScrollReveal width="100%">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-primary/10 bg-white">
+            <div className="relative overflow-hidden shadow-2xl border-y border-primary/10 bg-white">
               <img 
                 src="/그래프.png" 
                 alt="매출 증가 그래프" 
-                className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.01]"
+                className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.002]"
+                style={{ imageRendering: 'auto', WebkitBackfaceVisibility: 'hidden' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
             </div>
           </ScrollReveal>
           
           {/* Footer Text */}
-          <p className="mt-8 text-center text-[10px] sm:text-xs text-muted-foreground font-medium break-keep">
+          <p className="mt-8 text-center text-[10px] sm:text-xs text-muted-foreground font-medium break-keep px-6 lg:px-0 max-w-4xl mx-auto">
             *외국인 관광객 프리미엄 시술(두피 스파, 펌, 아트 네일 등) 평균 객단가 15만 원 기준
           </p>
         </div>
