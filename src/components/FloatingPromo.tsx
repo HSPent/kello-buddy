@@ -31,50 +31,58 @@ const FloatingPromo = () => {
 
   return (
     <>
-      <div className="fixed bottom-24 right-6 z-40 flex flex-col items-end gap-3 pointer-events-none">
+      <div className="fixed bottom-24 right-6 z-40 flex flex-col items-end pointer-events-none">
         <AnimatePresence>
           {isVisible && (
             <motion.div
               initial={{ opacity: 0, x: 50, scale: 0.8 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 50, scale: 0.8 }}
-              className="pointer-events-auto flex flex-col items-end group"
+              className="pointer-events-auto flex flex-col items-end"
             >
               {/* Close Button */}
               <button
                 onClick={() => setIsVisible(false)}
-                className="mb-1 p-1 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-border text-muted-foreground hover:text-foreground transition-colors"
+                className="mb-2 p-1 bg-white/90 backdrop-blur-sm rounded-full shadow-md border border-border text-muted-foreground hover:text-foreground transition-colors z-10"
               >
-                <X className="h-3 w-3" />
+                <X className="h-4 w-4" />
               </button>
 
-              {/* Coffee Promo Card */}
-              <button
-                onClick={handleOpenPromo}
-                className="bg-white rounded-2xl shadow-xl border border-primary/20 p-2 pr-4 flex items-center gap-3 hover:scale-105 transition-transform shadow-primary/10 overflow-hidden relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none" />
-                <img 
-                  src="/event-coffee.png" 
-                  alt="커피 이벤트" 
-                  className="w-12 h-12 rounded-xl object-contain bg-secondary/50"
-                />
-                <div className="text-left">
-                  <p className="text-[10px] font-bold text-primary uppercase tracking-wider mb-0.5">Event</p>
-                  <p className="text-sm font-black text-foreground leading-tight">
-                    지금 신청하면<br />커피 쿠폰 증정! 🎁
-                  </p>
-                </div>
-              </button>
+              {/* Unified Event Card */}
+              <div className="bg-white rounded-[2rem] shadow-2xl border-2 border-primary/10 overflow-hidden flex flex-col w-[280px] sm:w-[300px] shadow-primary/10 group">
+                {/* Upper Section: Coffee Coupon (Click to open promo) */}
+                <button
+                  onClick={handleOpenPromo}
+                  className="p-4 flex items-center gap-4 text-left hover:bg-primary/5 transition-colors relative"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none" />
+                  <div className="relative">
+                    <img 
+                      src="/event-coffee.png" 
+                      alt="커피 이벤트" 
+                      className="w-16 h-16 rounded-2xl object-contain bg-secondary/50 shadow-sm border border-white/50"
+                    />
+                    <div className="absolute -top-2 -right-2 bg-primary text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm">
+                      BONUS
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-[10px] font-black text-primary uppercase tracking-tighter mb-1 font-sans">Special Event</p>
+                    <h4 className="text-base sm:text-lg font-black text-foreground leading-tight">
+                      지금 신청하면<br />커피 쿠폰 증정! 🎁
+                    </h4>
+                  </div>
+                </button>
 
-              {/* Survey Button */}
-              <button
-                onClick={handleSurveyOpen}
-                className="mt-3 bg-foreground text-background rounded-full px-4 py-2.5 flex items-center gap-2 shadow-xl hover:bg-foreground/90 transition-all hover:scale-105 active:scale-95 border border-white/10"
-              >
-                <ClipboardList className="h-4 w-4 text-primary" />
-                <span className="text-xs font-bold whitespace-nowrap">설문조사 참여하기</span>
-              </button>
+                {/* Lower Section: Survey Button (Now integrated) */}
+                <button
+                  onClick={handleSurveyOpen}
+                  className="bg-foreground text-background py-4 px-6 flex items-center justify-center gap-2 hover:bg-foreground/90 transition-all active:scale-95 border-t border-white/10"
+                >
+                  <ClipboardList className="h-5 w-5 text-primary animate-pulse" />
+                  <span className="text-sm font-black tracking-tight">설문조사 참여하고 커피받기</span>
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -83,13 +91,12 @@ const FloatingPromo = () => {
       <SurveyDialog 
         open={surveyOpen} 
         onOpenChange={setSurveyOpen}
-        // 기본 정보 없이 설문만 진행 (필요시 '익명 사장님' 등으로 세팅 가능)
         basicInfo={{
-          businessName: "플로팅 링크 유입",
+          businessName: "플로팅 단일카드 유입",
           region: "미지정",
           category: "미지정",
           contact: "010-0000-0000",
-          email: "floating@kello.kr"
+          email: "integrated@kello.kr"
         }}
       />
     </>
@@ -97,3 +104,4 @@ const FloatingPromo = () => {
 };
 
 export default FloatingPromo;
+
