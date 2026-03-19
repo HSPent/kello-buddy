@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { BadgeCheck, Star, ShieldCheck, MessageSquareQuote } from "lucide-react";
+import { ClipboardCheck, Link2, Smile, Star, MessageSquareQuote } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const trustItems = [
-  { icon: BadgeCheck, label: "가격 신뢰", desc: "정찰제 기반의 투명한 가격 안내" },
-  { icon: Star, label: "후기 기반", desc: "실제 이용 후기로 검증된 매장" },
-  { icon: ShieldCheck, label: "보안·개인정보", desc: "안전한 결제 및 개인정보 보호" },
+  { icon: ClipboardCheck, label: "간편한 신청", desc: "복잡하지 않게 빠르게 파트너 등록 가능" },
+  { icon: Link2, label: "쉬운 예약 연결", desc: "외국인 고객 문의를 더 편하게 연결" },
+  { icon: Smile, label: "부담 없는 시작", desc: "처음이어도 어렵지 않게 시작할 수 있는 구조" },
 ];
 
 const reviews = [
