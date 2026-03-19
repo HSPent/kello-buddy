@@ -42,9 +42,12 @@ const SolutionSection = () => {
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">Solution</span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep">
-            <KelloText />가 외국인 고객과<br className="hidden sm:block" />사장님을 연결해드립니다
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 break-keep">
+            <KelloText />가 외국인 고객과<br className="hidden sm:block" />사장님을 연결해드립니다.
           </h2>
+          <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary/80 leading-tight tracking-tight break-keep pt-2">
+            "노쇼 없는 100% 선결제로<br className="sm:hidden" /> 확실한 방문과 매출 보장"
+          </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -55,13 +58,13 @@ const SolutionSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="glass-card rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300 flex flex-col items-center text-center"
+              className="glass-card rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-300 flex flex-col items-center text-center group"
             >
-              <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${s.gradient} mb-5 shadow-sm`}>
+              <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${s.gradient} mb-5 shadow-sm group-hover:scale-110 transition-transform`}>
                 <s.icon className="h-6 w-6 text-primary-foreground" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-foreground mb-3">{s.title}</h3>
-              <p className="text-foreground/80 font-bold leading-relaxed">{s.desc}</p>
+              <h3 className="text-lg sm:text-xl font-black text-foreground mb-3 break-keep">{s.title}</h3>
+              <p className="text-sm sm:text-base text-foreground/80 font-bold leading-relaxed break-keep">{s.desc}</p>
             </motion.div>
           ))}
         </div>
