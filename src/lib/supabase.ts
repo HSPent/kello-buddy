@@ -18,6 +18,7 @@ const mockSupabase = {
     insert: async () => ({ error: null }),
     upsert: async () => ({ error: null })
   })
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 } as any;
 
 export const supabase = (supabaseUrl && supabaseAnonKey) 

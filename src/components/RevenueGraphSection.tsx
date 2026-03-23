@@ -1,24 +1,6 @@
 import { motion } from "framer-motion";
 import KelloText from "./KelloText";
 
-const graphData = [
-  {
-    guests: "10명 증가",
-    revenue: "+80만원",
-    height: "20%",
-  },
-  {
-    guests: "30명 증가",
-    revenue: "+240만원",
-    height: "60%",
-  },
-  {
-    guests: "50명 증가",
-    revenue: "+400만원",
-    height: "100%",
-  },
-];
-
 const RevenueGraphSection = () => {
   return (
     <section className="py-24 bg-spring-yellow relative overflow-hidden">
@@ -28,10 +10,11 @@ const RevenueGraphSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">Revenue Growth</span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep whitespace-nowrap sm:whitespace-normal">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep">
             외국인 고객 몇 명만 늘어도 <br className="sm:hidden" /> 매출이 이렇게 증가합니다
           </h2>
           <div className="flex flex-col items-center gap-2 mb-8">
@@ -46,28 +29,18 @@ const RevenueGraphSection = () => {
           </div>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-md rounded-[2.5rem] p-6 sm:p-10 md:p-16 shadow-2xl border border-rose-100 relative overflow-hidden group">
-          {/* Graph Heading */}
+        <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-md rounded-[2.5rem] px-6 py-8 sm:px-10 md:px-16 shadow-2xl border border-rose-100 relative overflow-hidden group">
           <div className="flex flex-col items-center mb-12">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-black text-foreground mb-1">
-              한 달에 딱 <span className="text-rose-500">10명</span>만 늘어도, <span className="text-rose-600">매출 앞자리</span>가 바뀝니다.
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground mb-1 leading-tight break-keep text-center">
+              한 달에 딱 <span className="text-rose-500">10명</span>만 늘어도,<br className="sm:hidden" /> <span className="text-rose-600">매출 앞자리</span>가 바뀝니다.
             </h3>
-            <div className="w-16 h-1 bg-rose-200 rounded-full" />
+            <div className="w-16 h-1 bg-rose-200 rounded-full mt-4" />
           </div>
 
           {/* Real Graph Container */}
           <div className="relative h-64 sm:h-80 md:h-96 w-full mt-10">
-            {/* Guide Lines */}
-            {[0, 75, 150, 300, 450].map((val) => (
-              <div key={val} className="absolute w-full border-t border-dashed border-rose-100 flex items-center" style={{ bottom: `${(val / 500) * 100}%` }}>
-                <span className="text-[10px] sm:text-xs font-bold text-rose-300 -ml-12 sm:-ml-16 w-10 sm:w-14 text-right">
-                  {val === 0 ? "0원" : `${val}만원`}
-                </span>
-              </div>
-            ))}
-
             {/* X-Axis Labels */}
-            <div className="absolute bottom-[-30px] w-full flex justify-between px-4 sm:px-10 text-xs sm:text-sm font-black text-rose-400">
+            <div className="absolute bottom-[-30px] w-full flex justify-between px-2 sm:px-10 text-xs sm:text-sm font-black text-rose-400">
               <span>0명</span>
               <span>5명</span>
               <span>10명</span>
@@ -77,6 +50,17 @@ const RevenueGraphSection = () => {
 
             {/* The Curve Overlay (SVG) */}
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full overflow-visible">
+              <defs>
+                <linearGradient id="baseGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#94a3b8" />
+                  <stop offset="100%" stopColor="#f1f5f9" />
+                </linearGradient>
+                <linearGradient id="extraGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" />
+                  <stop offset="100%" stopColor="hsl(var(--primary) / 0.1)" />
+                </linearGradient>
+              </defs>
+
               {/* Baseline Area */}
               <motion.path
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -107,54 +91,30 @@ const RevenueGraphSection = () => {
                 stroke="hsl(var(--primary))"
                 strokeWidth="0.5"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
-              
-              <defs>
-                <linearGradient id="baseGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#94a3b8" />
-                  <stop offset="100%" stopColor="#f1f5f9" />
-                </linearGradient>
-                <linearGradient id="extraGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" />
-                  <stop offset="100%" stopColor="hsl(var(--primary) / 0.1)" />
-                </linearGradient>
-              </defs>
             </svg>
 
-            {/* Floating Value Labels */}
-            <motion.div 
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 1.5 }}
-              className="absolute left-[30%] bottom-[30%] -translate-x-1/2"
-            >
-              <div className="bg-white px-3 py-1 rounded-full shadow-lg border-2 border-primary/20 flex flex-col items-center">
-                <span className="text-[10px] font-black text-rose-400 leading-none mb-0.5">10명</span>
-                <span className="text-sm font-black text-foreground">150만원</span>
-                <div className="absolute -bottom-1 w-2 h-2 bg-white border-r-2 border-b-2 border-primary/20 rotate-45" />
-              </div>
-            </motion.div>
-
+            {/* Floating Value Label (30 guests) */}
             <motion.div 
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 2 }}
-              className="absolute right-[5%] top-[5%] -translate-x-1/2"
+              className="absolute right-0 top-[10%] -translate-y-[60%] translate-x-1/2 z-20"
             >
-              <div className="bg-primary px-4 py-1.5 rounded-full shadow-xl flex flex-col items-center animate-bounce">
+              <div className="bg-primary px-3 sm:px-4 py-1.5 rounded-full shadow-xl flex flex-col items-center animate-bounce">
                 <span className="text-[10px] font-black text-white/80 leading-none mb-0.5">30명</span>
-                <span className="text-base font-black text-white">450만원</span>
+                <span className="text-sm sm:text-base font-black text-white">450만원</span>
                 <div className="absolute -bottom-1 w-2 h-2 bg-primary rotate-45" />
               </div>
             </motion.div>
 
-            {/* Labels inside graph */}
-            <div className="absolute bottom-[12%] right-[20%] text-[10px] sm:text-xs font-black text-rose-500/60 uppercase tracking-widest italic">
-              Kello 추가 수익
+            {/* Area Labels - Centered within regions */}
+            <div className="absolute bottom-[30%] sm:bottom-[35%] left-1/2 -translate-x-1/3 text-[12px] sm:text-[18px] font-black text-rose-500/80 tracking-tight break-keep text-center drop-shadow-sm pointer-events-none w-full max-w-[150px] sm:max-w-none">
+              <KelloText />로 인한 추가 수익
             </div>
-            <div className="absolute bottom-[4%] left-[45%] text-[10px] sm:text-xs font-black text-slate-400 uppercase tracking-widest italic">
+            <div className="absolute bottom-[5%] left-[60%] -translate-x-1/2 text-[10px] sm:text-xs font-black text-slate-400 uppercase tracking-widest italic pointer-events-none">
               기존 매출
             </div>
           </div>

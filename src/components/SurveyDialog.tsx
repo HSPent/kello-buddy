@@ -61,11 +61,11 @@ const q4Options = [
 ] as const;
 
 const q5Options = [
-  { label: "합리적인 수수료", value: "fee" },
-  { label: "우수한 고객 품질 (객단가 등)", value: "customer_quality" },
-  { label: "예약 및 관리 편의성", value: "convenience" },
-  { label: "외국인 응대 지원 (번역 등)", value: "support" },
-  { label: "실제 매출 증대 가능성", value: "revenue" },
+  { label: "예약이 실제로 잘 들어오는가", value: "actual_bookings" },
+  { label: "사용이 간편한가", value: "ease_of_use" },
+  { label: "수수료가 합리적인가", value: "reasonable_fee" },
+  { label: "문제 발생 시 대응이 되는가", value: "issue_support" },
+  { label: "고객 퀄리티가 좋은가", value: "customer_quality" },
 ] as const;
 
 type Q1Value = (typeof q1Options)[number]["value"];
@@ -454,7 +454,7 @@ const SurveyDialog = ({
           {step === 4 && (
             <div className="space-y-3">
               <p className="font-semibold text-sm">
-                5. 제휴 플랫폼을 선택할 때 가장 중요하게 생각하시는 기준은?
+                5. 플랫폼을 선택할 때 가장 중요하게 생각하는 기준은 무엇인가요?
               </p>
               <RadioGroup
                 value={answers.q5}

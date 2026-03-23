@@ -54,7 +54,7 @@ const FooterMenuSection = ({ menu }: { menu: typeof FOOTER_MENUS[0] }) => {
         }`}
       >
         <ul className="flex flex-col gap-3 flex-wrap">
-          {menu.links.map((link: any, idx) => (
+          {menu.links.map((link: { name: string; href?: string; isDialog?: boolean; dialogComponent?: React.ReactNode; dialogTitle?: string; dialogImages?: string[]; dialogImage?: string; image?: string; text?: string; }, idx) => (
             <li key={idx}>
               <div className="flex flex-col gap-2 items-start">
                 {link.isDialog ? (

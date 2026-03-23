@@ -67,6 +67,13 @@
 }
 
 @layer base {
+  html {
+    /* 기본 기준 글꼴 16px -> 18px 상향 (112.5%)
+       Tailwind의 rem 기반 모든 텍스트(기본 +2px), 여백, 박스 크기가 일괄적으로 비율에 맞게 시원하게 커집니다. */
+    font-size: 112.5%;
+    @apply scroll-smooth;
+  }
+
   * {
     @apply border-border;
   }

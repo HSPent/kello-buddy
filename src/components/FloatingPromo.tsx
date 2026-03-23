@@ -68,7 +68,7 @@ const FloatingPromo = () => {
                     <X className="h-4 w-4" />
                   </button>
 
-                  <div className="bg-white rounded-[1.5rem] shadow-2xl border border-primary/10 overflow-hidden flex flex-col w-[220px] sm:w-[240px] shadow-primary/10 group">
+                  <div className="bg-white rounded-[1.5rem] shadow-2xl border border-primary/10 overflow-hidden flex flex-col w-[260px] sm:w-[280px] shadow-primary/10 group">
                     {/* Upper Section: Coffee Coupon (Click to open promo) */}
                     <button
                       onClick={handleOpenPromo}
@@ -87,7 +87,7 @@ const FloatingPromo = () => {
                       </div>
                       <div className="flex-1">
                         <p className="text-[8px] font-black text-primary uppercase tracking-tighter mb-0.5 font-sans">Special Event</p>
-                        <h4 className="text-xs sm:text-sm font-black text-foreground leading-tight">
+                        <h4 className="text-xs sm:text-sm font-black text-foreground leading-tight break-keep">
                           지금 신청하고 설문 완료하면<br />커피 쿠폰 증정! 🎁
                         </h4>
                       </div>

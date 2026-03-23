@@ -57,11 +57,12 @@ const ScrollReveal = ({
   };
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "visible" }} className={className}>
+    <div ref={ref} style={{ position: "relative", width, overflow: "visible" }} className={`h-full ${className}`}>
       <motion.div
         variants={variants}
         initial="hidden"
         animate={controls}
+        className="h-full flex flex-col"
       >
         {children}
       </motion.div>

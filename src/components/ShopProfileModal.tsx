@@ -15,7 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Store } from "lucide-react";
 
 interface ShopProfileModalProps {
-    user: any;
+    user: { id: string } | null;
 }
 
 export function ShopProfileModal({ user }: ShopProfileModalProps) {
@@ -36,6 +36,7 @@ export function ShopProfileModal({ user }: ShopProfileModalProps) {
         if (open && user) {
             loadShopProfile();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open, user]);
 
     const loadShopProfile = async () => {
@@ -121,12 +122,12 @@ export function ShopProfileModal({ user }: ShopProfileModalProps) {
                 description: "매장 정보가 성공적으로 저장되었습니다.",
             });
             setOpen(false);
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error);
             toast({
                 variant: "destructive",
                 title: "오류 발생",
-                description: error.message || "매장 정보를 저장할 수 없습니다.",
+                description: (error as Error).message || "매장 정보를 저장할 수 없습니다.",
             });
         } finally {
             setLoading(false);

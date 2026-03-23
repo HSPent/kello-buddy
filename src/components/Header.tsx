@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
-    const [user, setUser] = useState<any>(null);
+    const [user, setUser] = useState<{ id?: string, [key: string]: unknown } | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {

@@ -31,27 +31,20 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto flex flex-col items-center"
+          className="max-w-5xl mx-auto flex flex-col items-center"
         >
-          {/* Badge */}
-          <ScrollReveal delay={0.2}>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 mb-8 shadow-sm">
-              <Globe className="h-4 w-4 text-primary" />
-              <span className="text-sm font-bold text-primary">사장님 전용 파트너 제휴</span>
-            </div>
-          </ScrollReveal>
+
 
           <ScrollReveal delay={0.4}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight text-foreground mb-6 break-keep drop-shadow-md whitespace-nowrap sm:whitespace-normal">
-              이제, 외국인 손님이 <br className="sm:hidden" /> 매출이 됩니다
+            <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.3] sm:leading-tight text-foreground mb-6 break-keep drop-shadow-md md:whitespace-nowrap">
+              이제, 외국인 손님이 <br className="md:hidden" /> 매출이 됩니다
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.6}>
-            <p className="text-sm sm:text-base md:text-2xl text-foreground/80 leading-relaxed mb-10 font-bold max-w-4xl mx-auto break-keep">
-              <KelloText />는 외국인 관광객이 <br className="sm:hidden" /> 
-              한국 매장을 <br className="hidden md:block" /> 
-              쉽게 예약하도록 연결합니다
+            <p className="text-base sm:text-lg md:text-2xl text-foreground/80 leading-relaxed mb-10 font-bold max-w-4xl mx-auto break-keep px-4">
+              K-뷰티를 찾는 외국인 관광객은 단순 시술이 아닌 <br className="sm:hidden" /> 
+              ‘프리미엄 패키지’를 선호합니다.
             </p>
           </ScrollReveal>
 
@@ -78,8 +71,12 @@ const HeroSection = () => {
             id="benefits"
             initial={{ opacity: 0, y: 50, rotate: -5 }}
             animate={{ opacity: 1, y: 0, rotate: 2 }}
+            whileHover={{ 
+              rotate: [2, 3.5, 0.5, 3, 1, 2],
+              transition: { duration: 0.8, ease: "easeInOut" }
+            }}
             transition={{ delay: 1.2, type: "spring", stiffness: 100 }}
-            className="mt-16 w-full max-w-sm bg-[#fef08a] p-6 md:p-8 shadow-[5px_5px_15px_rgba(0,0,0,0.1)] relative border border-[#fde047] origin-top text-left"
+            className="mt-16 w-full max-w-[calc(100vw-3rem)] sm:max-w-sm bg-[#fef08a] p-6 md:p-8 shadow-[5px_5px_15px_rgba(0,0,0,0.1)] relative border border-[#fde047] origin-top text-left cursor-default mx-auto"
             style={{
               borderRadius: "2px 2px 20px 5px", // Slight curl effect
             }}
@@ -101,7 +98,7 @@ const HeroSection = () => {
               <KelloText /> 서비스를 무료로 사용할 수 있습니다.
             </p>
             <p className="text-amber-900 font-black break-keep text-lg md:text-xl drop-shadow-sm">
-              외국인 고객을 먼저 만나보는 기회,<br className="hidden sm:block" />
+              외국인 고객으로 매출상승의 기회,<br className="hidden sm:block" />
               지금 참여하세요! ✨
             </p>
           </motion.div>

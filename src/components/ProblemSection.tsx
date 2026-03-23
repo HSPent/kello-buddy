@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircleX, ShieldX, UserX } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import KelloText from "./KelloText";
 
 const problems = [
   {
@@ -52,8 +53,8 @@ const ProblemSection = () => {
                 <span className="font-bold text-kello-gold text-sm md:text-base mb-2 block">신뢰 장벽</span>
                 <p className="text-foreground">"정보가 부족한 외국인들이 가격에 의심을 가지고 신뢰가 부족해요."</p>
               </div>
-              <strong className="text-primary mt-6 sm:mt-12 mb-4 block text-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight drop-shadow-sm break-keep">
-                <span className="font-black bg-clip-text text-transparent" style={{ backgroundImage: "var(--kello-gradient-hero)" }}>Kello</span>는 이 문제를 <br className="sm:hidden" /> 완벽하게 해결합니다.
+              <strong className="text-primary mt-6 sm:mt-12 mb-4 block text-center text-[22px] sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight drop-shadow-sm break-keep">
+                <KelloText />는 이 문제를 <br className="sm:hidden" /> 완벽하게 해결합니다.
               </strong>
             </div>
           </div>

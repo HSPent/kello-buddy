@@ -45,18 +45,18 @@ const FAQSection = () => {
         </ScrollReveal>
 
         <ScrollReveal width="100%" delay={0.2}>
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-3">
+          <div className="w-full max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-3 sm:space-y-5">
               {faqs.map((faq, i) => (
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="bg-card rounded-xl border border-border px-6 shadow-sm"
+                  className="bg-card rounded-2xl border border-rose-100 px-4 sm:px-8 shadow-sm"
                 >
-                  <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline">
+                  <AccordionTrigger className="text-left font-bold text-foreground hover:no-underline text-base sm:text-lg py-4 sm:py-5">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed">
+                  <AccordionContent className="text-muted-foreground leading-relaxed text-sm sm:text-base pb-4 sm:pb-5">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>

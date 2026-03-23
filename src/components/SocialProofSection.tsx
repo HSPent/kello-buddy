@@ -88,15 +88,17 @@ const SocialProofSection = () => {
         </ScrollReveal>
 
         {/* Trust Icons */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16 items-stretch">
+        <div className="grid md:grid-cols-3 gap-5 sm:gap-6 max-w-5xl mx-auto mb-16 items-stretch w-full px-4">
           {trustItems.map((item, i) => (
-            <ScrollReveal key={item.label} delay={i * 0.1} width="100%" className="flex">
-              <div className="flex-1 flex flex-col items-center p-6 bg-white rounded-3xl shadow-sm border border-border/40 text-center min-h-[160px]">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
-                  <item.icon className="h-6 w-6 text-primary" />
+            <ScrollReveal key={item.label} delay={i * 0.1} width="100%" className="flex h-full !w-full [&>div]:w-full">
+              <div className="flex-1 w-full flex flex-col items-center p-6 sm:p-8 bg-white rounded-[2rem] shadow-sm border border-border/40 text-center min-h-[180px] justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 shrink-0">
+                  <item.icon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="font-bold text-foreground mb-1 whitespace-nowrap">{item.label}</h3>
-                <p className="text-sm text-muted-foreground whitespace-nowrap">{item.desc}</p>
+                <div className="flex flex-col flex-1 justify-center w-full">
+                  <h3 className="text-[17px] sm:text-[19px] font-black text-foreground mb-2 break-keep">{item.label}</h3>
+                  <p className="text-[14px] sm:text-[15px] font-bold text-muted-foreground break-keep leading-tight">{item.desc}</p>
+                </div>
               </div>
             </ScrollReveal>
           ))}

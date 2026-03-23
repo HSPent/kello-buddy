@@ -1,25 +1,50 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell, LabelList, AreaChart, Area, Tooltip as RechartsTooltip } from "recharts";
 
 const stats = [
   {
     title: "전체 외국인 관광객 수",
     mainVal: "2024년 1,700만 명",
+    subTitle: "방한 외래 관광객 수",
     subContent: (
-      <div className="mt-4 relative h-24 w-full flex items-end">
-        <svg viewBox="0 0 100 50" className="w-full h-full overflow-visible">
-          <path d="M0,45 L30,40 L60,30 L100,5" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="0" cy="45" r="2" fill="hsl(var(--primary))" />
-          <circle cx="30" cy="40" r="2" fill="hsl(var(--primary))" />
-          <circle cx="60" cy="30" r="2" fill="hsl(var(--primary))" />
-          <circle cx="100" cy="5" r="3" fill="hsl(var(--primary))" />
-          <g className="text-[6px] fill-muted-foreground font-bold">
-            <text x="0" y="52">2021</text>
-            <text x="25" y="52">2022</text>
-            <text x="55" y="52">2023</text>
-            <text x="85" y="52">2024</text>
-          </g>
-        </svg>
+      <div className="w-full flex flex-col items-center justify-between h-full min-h-[140px] mt-auto">
+        <div className="relative w-full h-[90px] sm:h-[100px] flex flex-grow items-end justify-center mb-3">
+          <svg viewBox="0 0 120 80" className="w-full h-full overflow-visible">
+            {/* Main Curve (Mathematically precise smooth curve) */}
+            <path d="M 0 55 Q 12 55, 24 52 T 48 45 T 72 35 T 96 20 T 120 5" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            
+            {/* Data Points - perfectly intersecting the curve */}
+            {[
+              { x: 0,   y: 55, yr: "2021" },
+              { x: 24,  y: 52, yr: "2022" },
+              { x: 48,  y: 45, yr: "2023" },
+              { x: 72,  y: 35, yr: "2024" },
+              { x: 96,  y: 20, yr: "2025" },
+              { x: 120, y: 5,  yr: "2026" }
+            ].map((p, i) => (
+              <g key={i}>
+                <circle cx={p.x} cy={p.y} r="3" fill="#fff" stroke="hsl(var(--primary))" strokeWidth="1.5" className="drop-shadow-sm" />
+                <text x={p.x} y="72" textAnchor="middle" className="text-[9px] fill-muted-foreground font-bold font-sans">{p.yr}</text>
+              </g>
+            ))}
+
+            {/* "?" Tooltip - perfectly centered over 2026 */}
+            <foreignObject x="105" y="-18" width="30" height="30">
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="bg-rose-500 text-white text-[13px] font-black w-7 h-7 rounded-md shadow-lg flex items-center justify-center leading-none relative">
+                  ?
+                  <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-2 h-2 bg-rose-500 rotate-45" />
+                </div>
+              </div>
+            </foreignObject>
+          </svg>
+        </div>
+        <div className="w-full flex justify-center pb-1">
+          <p className="text-[11px] sm:text-[12px] font-bold text-rose-400 italic bg-rose-50/50 py-1.5 px-3 rounded-full border border-rose-100/50 w-full text-center break-keep leading-tight shadow-[0_2px_8px_rgba(255,228,230,0.5)]">
+            "2024년 1,700만 명 &gt;&gt; 2026년 1,800만명~2,000만 명 사이 추정"
+          </p>
+        </div>
       </div>
     ),
   },
@@ -28,13 +53,13 @@ const stats = [
     mainVal: "약 250만 명",
     subTitle: "미용 서비스 이용자 수",
     extra: (
-      <div className="mt-2 flex flex-col items-center">
-        <div className="flex items-center gap-4">
-          <div className="relative w-16 h-16">
-            <svg viewBox="0 0 36 36" className="w-full h-full">
-              <circle cx="18" cy="18" r="16" fill="none" stroke="#eee" strokeWidth="4" />
+      <div className="flex flex-col items-center w-full h-full justify-center min-h-[140px] mt-auto">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 w-full pb-0">
+          <div className="relative w-24 h-24 sm:w-[100px] sm:h-[100px] shrink-0">
+            <svg viewBox="0 0 36 36" className="w-full h-full drop-shadow-md">
+              <circle cx="18" cy="18" r="16" fill="none" stroke="#fce7f3" strokeWidth="3.5" />
               <motion.circle
-                cx="18" cy="18" r="16" fill="none" stroke="hsl(var(--primary))" strokeWidth="4"
+                cx="18" cy="18" r="16" fill="none" stroke="hsl(var(--primary))" strokeWidth="3.5"
                 strokeDasharray="100 100" strokeDashoffset="85" strokeLinecap="round"
                 initial={{ strokeDashoffset: 100 }}
                 whileInView={{ strokeDashoffset: 85 }}
@@ -42,11 +67,11 @@ const stats = [
                 transition={{ duration: 1.5, delay: 0.5 }}
               />
             </svg>
-            <div className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-primary">15%</div>
+            <div className="absolute inset-0 flex items-center justify-center text-[13px] sm:text-[15px] font-black text-rose-500 mt-0.5">15%</div>
           </div>
-          <div className="text-left">
-            <p className="text-xl font-black text-muted-foreground">전체 관광객 중 비중</p>
-            <p className="text-2xl font-black text-primary">약 15%</p>
+          <div className="text-left flex flex-col justify-center">
+            <p className="text-[13px] sm:text-[15px] font-black text-muted-foreground leading-tight mb-1.5 break-keep">전체 관광객 중 비중</p>
+            <p className="text-[28px] sm:text-[34px] font-black text-rose-500 tracking-tight leading-none">약 15%</p>
           </div>
         </div>
       </div>
@@ -55,20 +80,21 @@ const stats = [
   {
     title: "1인당 미용 목적 평균 지출",
     mainVal: "153만 원",
+    subTitle: " ",
     extra: (
-      <div className="mt-4 space-y-3 w-full">
-        <div className="flex items-center gap-3 bg-white/40 p-2 rounded-xl border border-white/50">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">💳</div>
-          <div className="text-left">
-            <p className="text-[9px] font-bold text-muted-foreground">미용목적 카드 사용액 평균</p>
-            <p className="text-sm font-black text-primary">153만 원</p>
+      <div className="space-y-2 sm:space-y-3 w-full h-full flex flex-col justify-end min-h-[140px] mt-auto">
+        <div className="flex items-center gap-3 sm:gap-4 bg-white/60 p-3 sm:p-4 rounded-2xl border border-white shadow-sm w-full">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center text-xl sm:text-[24px] shadow-inner">💳</div>
+          <div className="text-left flex-1 space-y-0.5">
+            <p className="text-[12px] sm:text-[13px] font-bold text-muted-foreground leading-tight">미용목적 카드 사용액 평균</p>
+            <p className="text-[15px] sm:text-[17px] font-black text-primary leading-tight">153만 원</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 bg-white/40 p-2 rounded-xl border border-white/50">
-          <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent">👛</div>
-          <div className="text-left">
-            <p className="text-[9px] font-bold text-muted-foreground">한국 내 전체 카드 사용액 평균</p>
-            <p className="text-sm font-black text-rose-500">399만 원</p>
+        <div className="flex items-center gap-3 sm:gap-4 bg-white/60 p-3 sm:p-4 rounded-2xl border border-white shadow-sm w-full">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl bg-rose-50 flex items-center justify-center text-xl sm:text-[24px] shadow-inner">🛍️</div>
+          <div className="text-left flex-1 space-y-0.5">
+            <p className="text-[12px] sm:text-[13px] font-bold text-muted-foreground leading-tight">한국 내 전체 카드 사용액 평균</p>
+            <p className="text-[15px] sm:text-[17px] font-black text-rose-500 leading-tight">399만 원</p>
           </div>
         </div>
       </div>
@@ -95,17 +121,36 @@ const KBeautyTrendSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* 3 Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-6xl mx-auto items-stretch">
+        {/* 3 Stats Cards - Standardized Design System */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-14 max-w-[1300px] mx-auto items-stretch w-full px-4">
           {stats.map((s, i) => (
-            <ScrollReveal key={i} delay={i * 0.15} direction="up" width="100%" className="flex">
-              <div className="flex-1 bg-white/40 backdrop-blur-md rounded-[2rem] p-8 border border-white/60 shadow-xl flex flex-col items-center text-center group hover:-translate-y-1 transition-transform min-h-[320px]">
-                <h3 className="text-base sm:text-lg font-black text-foreground/80 mb-2">{s.title}</h3>
-                <p className="text-xl sm:text-2xl font-black text-rose-500 mb-1">{s.mainVal}</p>
-                {s.subTitle && <p className="text-xs font-bold text-muted-foreground">{s.subTitle}</p>}
-                <div className="w-full flex-grow flex items-center justify-center">
+            <ScrollReveal key={i} delay={i * 0.15} direction="up" width="100%" className="flex h-full !w-full [&>div]:w-full">
+              <div className="flex-1 w-full bg-white/70 backdrop-blur-xl rounded-[2.5rem] p-5 sm:p-8 border-2 border-white shadow-xl flex flex-col items-center text-center group hover:-translate-y-1 transition-all duration-300">
+                
+                {/* ── Fixed Height Common Header (Title/Value/Subtitle) ── */}
+                <div className="flex flex-col items-center w-full mb-4 sm:mb-6">
+                  {/* Container for title and main value to perfectly align baselines without excessive height */}
+                  <div className="min-h-[4.5rem] sm:min-h-[5.5rem] flex flex-col justify-start items-center">
+                    <h3 className="text-[17px] sm:text-[19px] md:text-[20px] font-black text-foreground/80 mb-2 break-keep leading-tight px-1 tracking-tight">
+                      {s.title}
+                    </h3>
+                    <p className="text-[26px] sm:text-[34px] md:text-[40px] font-black text-rose-600 tracking-tighter leading-none whitespace-nowrap">
+                      {s.mainVal}
+                    </p>
+                  </div>
+                  {/* Subtle space for subtitle */}
+                  <div className="h-5 flex items-center justify-center mt-1">
+                    <p className="text-[14px] sm:text-[15px] font-bold text-muted-foreground break-keep leading-none whitespace-nowrap">
+                      {s.subTitle || " "}
+                    </p>
+                  </div>
+                </div>
+
+                {/* ── Standardized Bottom Content Area (Compact) ── */}
+                <div className="w-full flex-grow flex flex-col items-center justify-end border-t border-rose-100 pt-4 sm:pt-6 mt-auto">
                   {s.subContent || s.extra}
                 </div>
+                
               </div>
             </ScrollReveal>
           ))}
@@ -113,222 +158,19 @@ const KBeautyTrendSection = () => {
 
         {/* Charts Container */}
         <ScrollReveal width="100%" delay={0.2}>
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-10">
+          <div className="w-full mx-auto">
+            <div className="text-center mb-10 max-w-[1300px] mx-auto px-4">
               <h3 className="text-2xl sm:text-3xl font-black text-foreground">미용·뷰티 이용객 및 매출 성장 추이</h3>
               <div className="w-16 h-1 bg-rose-300 mx-auto mt-3 rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-
-              {/* ── LEFT: Bar Chart ── */}
-              <div className="bg-white/50 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-white/70 shadow-xl">
-                <div className="relative h-80 sm:h-96 mt-10">
-                  {/* Y-axis labels */}
-                  {["300만", "250만", "200만", "150만", "100만", "50만", "0"].map((v, i) => {
-                    const percentages = [100, 83.3, 66.6, 50, 33.3, 16.6, 0];
-                    return (
-                      <div key={v} className="absolute left-0 text-xs font-bold text-rose-300"
-                        style={{ bottom: `${percentages[i]}%`, transform: "translateY(50%)" }}>
-                        {v}
-                      </div>
-                    );
-                  })}
-                  {/* Grid lines */}
-                  {[0, 16.6, 33.3, 50, 66.6, 83.3, 100].map(p => (
-                    <div key={p} className="absolute w-full border-t border-dashed border-rose-100"
-                      style={{ bottom: `${p}%`, left: "2rem" }} />
-                  ))}
-                  {/* Bars */}
-                  <div className="absolute inset-0 flex items-end justify-around pl-10 pb-8 gap-3">
-                    {[
-                      { yr: "2021", pct: 40, valTag: null },
-                      { yr: "2022", pct: 55, valTag: { text: "150만 명", highlight: false } },
-                      { yr: "2023", pct: 72, valTag: { text: "210만 명", highlight: false } },
-                      { yr: "2024", pct: 90, valTag: { text: "250만 명", highlight: true } },
-                    ].map((bar, i) => (
-                      <div key={i} className="flex-1 flex flex-col items-center h-full justify-end relative">
-                        {bar.valTag && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 12 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.8 + i * 0.1 }}
-                            className={`absolute whitespace-nowrap text-sm font-black px-3 py-1 rounded-xl shadow-md z-10 ${bar.valTag.highlight ? "bg-rose-600 text-white text-base" : "bg-rose-100 text-rose-600"}`}
-                            style={{ bottom: `calc(${bar.pct}% + 2rem)` }}
-                          >
-                            {bar.valTag.text}
-                            <div className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rotate-45 ${bar.valTag.highlight ? "bg-rose-600" : "bg-rose-100"}`} />
-                          </motion.div>
-                        )}
-                        <motion.div
-                          initial={{ height: 0 }}
-                          whileInView={{ height: `${bar.pct}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.2, delay: 0.2 + i * 0.15, ease: "easeOut" }}
-                          className={`w-full max-w-[60px] rounded-t-2xl shadow-lg ${i === 3 ? "bg-gradient-to-t from-rose-700 via-rose-500 to-rose-400" : "bg-gradient-to-t from-rose-300 to-rose-200"}`}
-                        />
-                        <span className="absolute -bottom-6 text-sm font-bold text-muted-foreground">{bar.yr}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* ── RIGHT: Line / Area Chart ── */}
-              <div className="bg-white/50 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-white/70 shadow-xl">
-                <div className="flex justify-end mb-2">
-                  <span className="text-xs font-bold text-muted-foreground">미용 시술 총 매출액 (억 원)</span>
-                </div>
-                {/* Chart area */}
-                <div className="relative h-80 sm:h-96">
-                  {/* Y-axis labels LEFT */}
-                  {["7000", "6000", "5000", "4000", "3000", "2000", "1000", "0"].map((v, i) => {
-                    const p = (parseInt(v) / 7000) * 100;
-                    return (
-                      <div key={v} className="absolute left-0 text-[10px] font-bold text-rose-300"
-                        style={{ bottom: `${p}%`, transform: "translateY(50%)" }}>
-                        {v}
-                      </div>
-                    );
-                  })}
-
-                  {/* SVG — viewBox has negative top space for labels */}
-                  <div className="absolute inset-0 px-10 pb-8">
-                    <svg
-                      viewBox="0 -120 300 350"
-                      className="w-full h-full overflow-visible"
-                      preserveAspectRatio="none"
-                    >
-                      <defs>
-                        <linearGradient id="areaGrad2" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#f43f5e" stopOpacity="0.35" />
-                          <stop offset="100%" stopColor="#fff" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-
-                      {/* Grid lines - precisely mapped to labels */}
-                      {[0, 28.57, 57.14, 85.71, 114.28, 142.85, 171.42, 200].map(y => (
-                        <line key={y} x1="0" y1={y} x2="300" y2={y} stroke="#FFE4E9" strokeWidth="0.5" strokeDasharray="4,4" />
-                      ))}
-
-                      {/* Area fill */}
-                      <motion.path
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 2 }}
-                        d="M 20 185 C 60 175, 80 160, 100 130 C 130 95, 170 65, 220 50 L 280 30 L 280 200 L 20 200 Z"
-                        fill="url(#areaGrad2)"
-                      />
-
-                      {/* Line */}
-                      <motion.path
-                        initial={{ pathLength: 0 }}
-                        whileInView={{ pathLength: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 2.5, ease: "easeOut" }}
-                        d="M 20 185 C 60 175, 80 160, 100 130 C 130 95, 170 65, 220 50 L 280 30"
-                        fill="none"
-                        stroke="#9F1239"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-
-                      {/* Data point circles - precisely aligned with grid lines */}
-                      {[
-                        { x: 20,  y: 171.42 }, // 1000
-                        { x: 100, y: 114.28 }, // 3000
-                        { x: 220, y: 28.57  }, // 6000
-                        { x: 280, y: 0      }, // 7000
-                      ].map((p, i) => (
-                        <motion.circle
-                          key={i}
-                          cx={p.x} cy={p.y} r="6"
-                          fill="white" stroke="#9F1239" strokeWidth="2.5"
-                          initial={{ scale: 0 }}
-                          whileInView={{ scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 1 + i * 0.2 }}
-                        />
-                      ))}
-
-                      {/* ── 6,000억 label — centered on x=220, y=28.57 ── */}
-                      <line x1="220" y1="-15" x2="220" y2="23" stroke="#fda4af" strokeWidth="1.5" strokeDasharray="3,2" />
-                      <foreignObject x="150" y="-65" width="140" height="50">
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-                          <div style={{
-                            background: "#ffe4e6",
-                            color: "#e11d48",
-                            fontSize: "12px",
-                            fontWeight: 900,
-                            padding: "4px 12px",
-                            borderRadius: "12px",
-                            whiteSpace: "nowrap",
-                            boxShadow: "0 4px 12px rgba(225,29,72,0.15)",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "6px"
-                          }}>
-                            <span style={{ backgroundColor: "#e11d48", color: "#fff", width: "16px", height: "16px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "10px" }}>?</span>
-                            6,000억 원
-                          </div>
-                        </div>
-                      </foreignObject>
-
-                      {/* ── 7,000억 label — centered on x=280, y=0 ── */}
-                      <line x1="280" y1="-55" x2="280" y2="-8" stroke="#9f1239" strokeWidth="1.5" strokeDasharray="3,2" />
-                      <foreignObject x="210" y="-105" width="140" height="50">
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-                          <div style={{
-                            background: "#9f1239",
-                            color: "#fff",
-                            fontSize: "12px",
-                            fontWeight: 900,
-                            padding: "4px 12px",
-                            borderRadius: "12px",
-                            whiteSpace: "nowrap",
-                            boxShadow: "0 4px 16px rgba(159,18,57,0.3)",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "6px"
-                          }}>
-                            <span style={{ backgroundColor: "#fff", color: "#9f1239", width: "16px", height: "16px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "10px" }}>?</span>
-                            7,000억 원
-                          </div>
-                        </div>
-                      </foreignObject>
-
-                      {/* Kello와 추가 수익 annotation — centered between 2023-2024 */}
-                      <foreignObject x="100" y="70" width="160" height="80">
-                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%" }}>
-                          <div style={{
-                            color: "#9f1239",
-                            fontSize: "13px",
-                            fontWeight: 900,
-                            textAlign: "center",
-                            lineHeight: 1.3,
-                            backgroundColor: "rgba(255,255,255,0.7)",
-                            padding: "4px 8px",
-                            borderRadius: "8px",
-                            backdropFilter: "blur(2px)"
-                          }}>
-                            Kello와<br />추가 수익
-                          </div>
-                          <div style={{ color: "#e11d48", fontSize: "20px", marginTop: "1px", fontWeight: "bold" }}>↑</div>
-                        </div>
-                      </foreignObject>
-                    </svg>
-
-                    {/* X Axis */}
-                    <div className="absolute bottom-0 w-full flex justify-between px-10 text-sm font-bold text-muted-foreground">
-                      <span>2021</span><span>2022</span><span>2023</span><span>2024</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+            {/* Image Replacement for Charts */}
+            <div className="w-full max-w-[1400px] mx-auto px-4 mt-4 sm:mt-8">
+              <img 
+                src="/fff.png" 
+                alt="미용·뷰티 이용객 및 매출 성장 추이 그래프" 
+                className="w-full h-auto object-contain"
+              />
             </div>
           </div>
         </ScrollReveal>
