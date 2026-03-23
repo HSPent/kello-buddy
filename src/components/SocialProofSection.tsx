@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ClipboardCheck, Link2, Smile, Star, MessageSquareQuote } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import KelloText from "./KelloText";
 
 const trustItems = [
   { icon: ClipboardCheck, label: "간편한 신청", desc: "복잡하지 않게 빠르게 파트너 등록 가능" },
@@ -79,10 +80,10 @@ const SocialProofSection = () => {
       <div className="absolute bottom-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
       <div className="container mx-auto px-6">
         <ScrollReveal width="100%">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 px-2">
             <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">Trust</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground break-keep">
-              사장님이 <br className="sm:hidden" /> 신뢰할 수 있는 이유
+            <h2 className="text-[22px] min-[375px]:text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground whitespace-nowrap sm:whitespace-normal">
+              <KelloText />를 선택해야 하는 이유
             </h2>
           </div>
         </ScrollReveal>
@@ -154,6 +155,15 @@ const SocialProofSection = () => {
           ))}
         </motion.div>
       </div>
+
+      {/* Closing Phrase */}
+      <ScrollReveal width="100%" delay={0.5}>
+        <div className="container mx-auto px-6 text-center mt-12 mb-4">
+          <p className="text-xl sm:text-2xl md:text-3xl font-black text-foreground/90 break-keep leading-tight drop-shadow-sm">
+            "<KelloText />하길 잘했다"고 <br className="sm:hidden" /> 느끼실 수 있게 하겠습니다.
+          </p>
+        </div>
+      </ScrollReveal>
     </section>
   );
 };

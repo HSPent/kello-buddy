@@ -159,8 +159,8 @@ const KBeautyTrendSection = () => {
         {/* Charts Container */}
         <ScrollReveal width="100%" delay={0.2}>
           <div className="w-full mx-auto">
-            <div className="text-center mb-10 max-w-[1300px] mx-auto px-4">
-              <h3 className="text-2xl sm:text-3xl font-black text-foreground">미용·뷰티 이용객 및 매출 성장 추이</h3>
+            <div className="text-center mb-10 max-w-[1300px] mx-auto px-2">
+              <h3 className="text-[19px] min-[375px]:text-xl sm:text-3xl font-black text-foreground whitespace-nowrap sm:whitespace-normal">미용·뷰티 이용객 및 매출 성장 추이</h3>
               <div className="w-16 h-1 bg-rose-300 mx-auto mt-3 rounded-full" />
             </div>
 
