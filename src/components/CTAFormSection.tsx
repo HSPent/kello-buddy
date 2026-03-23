@@ -27,7 +27,8 @@ const CTAFormSection = () => {
   });
   const [surveyOpen, setSurveyOpen] = useState(false);
   const [showBridge, setShowBridge] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [applicationId, setApplicationId] = useState<string | null>(null);
   // 제출 시점의 기본정보를 스냅샷으로 보존 → SurveyDialog에 안정적으로 전달
   const [pendingBasicInfo, setPendingBasicInfo] = useState<typeof form | null>(null);
 
@@ -38,30 +39,45 @@ const CTAFormSection = () => {
       return;
     }
 
-    setIsLoading(true);
+    setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('partner_applications')
-        .insert({
-          company_name: form.businessName,
+      console.log("Submitting to partner_applications at:", import.meta.env.VITE_SUPABASE_URL);
+      const { data, error } = await supabase
+        .from("partner_applications")
+        .insert([{
+          company_name: form.businessName.trim(),
           region: form.region,
           business_type: form.category,
-          phone: form.contact,
-          email: form.email,
-          source: 'landing_page'
+          phone: form.contact.trim(),
+          email: form.email.trim(),
+          source: "landing_page_cta"
+        }])
+        .select()
+        .single();
+
+      if (error) {
+        console.error("Partner Applications Insert Error:", {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+          hint: error.hint,
         });
+        throw error;
+      }
 
-      if (error) throw error;
+      if (data) {
+        setApplicationId(data.id);
+        toast.success("신청 정보가 접수되었습니다!");
+      }
 
-      // 현재 form 값을 스냅샷으로 저장 후 브릿지 팝업 오픈
       setPendingBasicInfo({ ...form });
       setShowBridge(true);
     } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error("죄송합니다. 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+      console.error("Full Submission Exception:", error);
+      toast.error("신청 중 오류가 발생했습니다. 개발자 도구(F12) 콘솔 창을 확인해 주세요.");
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -166,15 +182,15 @@ const CTAFormSection = () => {
 
               <button
                 type="submit"
-                disabled={isLoading}
+                disabled={isSubmitting}
                 className="w-full bg-gradient-accent text-accent-foreground font-black py-4 sm:py-5 rounded-2xl text-lg sm:text-xl shadow-kello-glow hover:scale-[1.02] transition-transform flex items-center justify-center gap-2 mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {isLoading ? (
+                {isSubmitting ? (
                   <Loader2 className="h-5 w-5 sm:h-6 sm:w-6 animate-spin" />
                 ) : (
                   <Send className="h-5 w-5 sm:h-6 sm:w-6" />
                 )}
-                {isLoading ? "제출 중..." : "외국인 고객 받고 매출 올리기"}
+                {isSubmitting ? "제출 중..." : "외국인 고객 받고 매출 올리기"}
               </button>
             </form>
 
@@ -216,6 +232,7 @@ const CTAFormSection = () => {
                 open={surveyOpen}
                 onOpenChange={setSurveyOpen}
                 basicInfo={pendingBasicInfo}
+                applicationId={applicationId}
                 onComplete={handleSurveyComplete}
               />
             )}

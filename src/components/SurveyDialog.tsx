@@ -18,6 +18,7 @@ import { supabase } from "@/lib/supabase";
 export interface SurveyDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  applicationId?: string | null;
   basicInfo?: {
     businessName: string;
     region: string;
@@ -101,6 +102,7 @@ const INITIAL_ANSWERS: AnswersState = {
 const SurveyDialog = ({
   open,
   onOpenChange,
+  applicationId,
   basicInfo,
   onComplete,
 }: SurveyDialogProps) => {
@@ -207,59 +209,53 @@ const SurveyDialog = ({
     setIsSubmitting(true);
 
     try {
+      const getQ1Label = (val: string) => q1Options.find(o => o.value === val)?.label || val;
+      const getQ2Labels = (vals: string[]) => vals.map(v => q2Options.find(o => o.value === v)?.label || v);
+      const getQ3Label = (val: string) => q3Options.find(o => o.value === val)?.label || val;
+      const getQ4Label = (val: string) => q4Options.find(o => o.value === val)?.label || val;
+      const getQ5Label = (val: string) => q5Options.find(o => o.value === val)?.label || val;
+
       const payload = {
         company_name: basicInfo?.businessName?.trim() || "",
         region: basicInfo?.region?.trim() || "",
         business_type: basicInfo?.category?.trim() || "",
         phone: basicInfo?.contact?.trim() || "",
         email: basicInfo?.email?.trim() || "",
-        q1_foreign_customer_ratio: answers.q1,
-        q2_difficulties: answers.q2, // 배열 그대로 저장
-        q3_inflow_channel: answers.q3,
-        q4_most_needed: answers.q4,
-        q5_partnership_intent: answers.q5,
-        q6_case_note: answers.q6?.trim() || null,
-        source: "landing_page",
+        q1_외국인고객비율: getQ1Label(answers.q1),
+        q2_어려움: getQ2Labels(answers.q2),
+        q3_유입경로: getQ3Label(answers.q3),
+        q4_필요한기능: getQ4Label(answers.q4),
+        q5_제휴기준: getQ5Label(answers.q5),
+        q6_참고사항: answers.q6?.trim() || "",
+        source: "landing_page_official_korean",
         raw_payload: {
-          basicInfo: {
-            businessName: basicInfo?.businessName?.trim() || "",
-            region: basicInfo?.region?.trim() || "",
-            category: basicInfo?.category?.trim() || "",
-            contact: basicInfo?.contact?.trim() || "",
-            email: basicInfo?.email?.trim() || "",
-          },
           answers: {
-            q1: answers.q1,
-            q2: answers.q2,
-            q3: answers.q3,
-            q4: answers.q4,
-            q5: answers.q5,
+            q1: getQ1Label(answers.q1),
+            q2: getQ2Labels(answers.q2),
+            q3: getQ3Label(answers.q3),
+            q4: getQ4Label(answers.q4),
+            q5: getQ5Label(answers.q5),
             q6: answers.q6?.trim() || "",
-          },
-        },
+          }
+        }
       };
 
-      console.log("partner payload:", payload);
+      console.log("Submitting Korean Survey Payload...");
 
-      const { error } = await supabase
+      const { data: insertData, error } = await supabase
         .from("partner_applications")
-        .insert([payload]);
+        .upsert([payload], { onConflict: 'phone' })
+        .select();
 
       if (error) {
-        console.error("insert error full:", {
-          message: error.message,
-          code: error.code,
-          details: error.details,
-          hint: error.hint,
-        });
-
-        alert(
-          `저장 실패\n메시지: ${error.message}\n코드: ${error.code}\n상세: ${error.details}\n힌트: ${error.hint}`
-        );
+        console.error("Critical Survey Error:", error);
+        alert(`저장 실패: ${error.message}`);
         throw error;
       }
 
-      alert("제휴 신청이 정상 등록되었습니다.");
+      console.log("Survey successfully saved:", insertData);
+
+      alert("설문에 참여해 주셔서 감사합니다.");
       toast.success("설문이 완료되었습니다. 감사합니다!");
       setSubmitted(true);
     } catch (err) {
