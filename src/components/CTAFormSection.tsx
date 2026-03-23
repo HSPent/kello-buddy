@@ -5,6 +5,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 import SurveyDialog from "./SurveyDialog";
 import ScrollReveal from "./ScrollReveal";
+import { supabase } from "@/lib/supabase";
+import { Loader2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -26,18 +28,58 @@ const CTAFormSection = () => {
   });
   const [surveyOpen, setSurveyOpen] = useState(false);
   const [showBridge, setShowBridge] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [applicationId, setApplicationId] = useState<string | null>(null);
   // 제출 시점의 기본정보를 스냅샷으로 보존 → SurveyDialog에 안정적으로 전달
   const [pendingBasicInfo, setPendingBasicInfo] = useState<typeof form | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.businessName || !form.region || !form.category || !form.contact || !form.email) {
       toast.error("모든 항목을 입력해주세요.");
       return;
     }
-    // 현재 form 값을 스냅샷으로 저장 후 브릿지 팝업 오픈
-    setPendingBasicInfo({ ...form });
-    setShowBridge(true);
+
+    setIsSubmitting(true);
+
+    try {
+      console.log("Submitting to partner_applications at:", import.meta.env.VITE_SUPABASE_URL);
+      const { data, error } = await supabase
+        .from("partner_applications")
+        .insert([{
+          company_name: form.businessName.trim(),
+          region: form.region,
+          business_type: form.category,
+          phone: form.contact.trim(),
+          email: form.email.trim(),
+          source: "landing_page_cta"
+        }])
+        .select()
+        .single();
+
+      if (error) {
+        console.error("Partner Applications Insert Error:", {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+          hint: error.hint,
+        });
+        throw error;
+      }
+
+      if (data) {
+        setApplicationId(data.id);
+        toast.success("신청 정보가 접수되었습니다!");
+      }
+
+      setPendingBasicInfo({ ...form });
+      setShowBridge(true);
+    } catch (error) {
+      console.error("Full Submission Exception:", error);
+      toast.error("신청 중 오류가 발생했습니다. 개발자 도구(F12) 콘솔 창을 확인해 주세요.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleStartSurvey = () => {
@@ -133,9 +175,10 @@ const CTAFormSection = () => {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-accent text-accent-foreground font-bold py-5 rounded-xl text-xl shadow-kello-glow hover:scale-[1.02] transition-transform flex items-center justify-center gap-2 mt-4"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-accent text-accent-foreground font-bold py-5 rounded-xl text-xl shadow-kello-glow hover:scale-[1.02] transition-transform flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="h-6 w-6" />
+                {isSubmitting ? <Loader2 className="h-6 w-6 animate-spin" /> : <Send className="h-6 w-6" />}
                 외국인 고객 받고 매출 올리기
               </button>
             </form>
@@ -188,6 +231,7 @@ const CTAFormSection = () => {
                 open={surveyOpen}
                 onOpenChange={setSurveyOpen}
                 basicInfo={pendingBasicInfo}
+                applicationId={applicationId}
                 onComplete={handleSurveyComplete}
               />
             )}
