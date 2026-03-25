@@ -17,6 +17,7 @@ import {
 const regions = ["서울", "부산", "제주", "대구", "인천", "경기", "기타"];
 const categories = ["헤어", "피부", "메이크업", "네일/속눈썹/왁싱", "바디/체형관리"];
 
+
 const CTAFormSection = () => {
   const [form, setForm] = useState({
     businessName: "",
@@ -42,40 +43,47 @@ const CTAFormSection = () => {
     setIsSubmitting(true);
 
     try {
+      // 보안 컨텍스트(https)가 아니더라도 절대 튕기지 않는 고유 ID 생성기
+      const newApplicationId = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+        const r = (Math.random() * 16) | 0,
+          v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      });
+
       console.log("Submitting to partner_applications at:", import.meta.env.VITE_SUPABASE_URL);
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("partner_applications")
         .insert([{
+          id: newApplicationId,
           company_name: form.businessName.trim(),
           region: form.region,
           business_type: form.category,
           phone: form.contact.trim(),
           email: form.email.trim(),
           source: "landing_page_cta"
-        }])
-        .select()
-        .single();
+        }]);
+
+      if (error?.code === "23505") {
+        toast.error("이미 신청이 접수된 연락처입니다. 다른 번호를 사용해 주세요.");
+        return;
+      }
 
       if (error) {
-        console.error("Partner Applications Insert Error:", {
-          message: error.message,
-          code: error.code,
-          details: error.details,
-          hint: error.hint,
-        });
+        console.error("Partner Applications Insert Error:", error);
         throw error;
       }
 
-      if (data) {
-        setApplicationId(data.id);
-        toast.success("신청 정보가 접수되었습니다!");
-      }
+      setApplicationId(newApplicationId);
+      
+      toast.success("신청 정보가 접수되었습니다!");
 
       setPendingBasicInfo({ ...form });
       setShowBridge(true);
-    } catch (error) {
-      console.error("Full Submission Exception:", error);
-      toast.error("신청 중 오류가 발생했습니다. 개발자 도구(F12) 콘솔 창을 확인해 주세요.");
+    } catch (err: any) {
+      console.error("Full Submission Exception:", err);
+      // 추가된 에러 표출 (사용자가 어떤 에러인지 파악할 수 있게)
+      const errorMsg = err?.message || err?.details || "알 수 없는 에러가 발생했습니다.";
+      toast.error(`신청 중 오류가 발생했습니다: ${errorMsg}`);
     } finally {
       setIsSubmitting(false);
     }
