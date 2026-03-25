@@ -30,43 +30,43 @@ export interface SurveyDialogProps {
 }
 
 const q1Options = [
-  { label: "거의 없음 (월 1~2명 이하)", value: "almost_none" },
-  { label: "가끔 있음 (월 3~10명)", value: "sometimes" },
-  { label: "꾸준히 있음 (월 10~30명)", value: "steady" },
-  { label: "매우 많음 (월 30명 이상)", value: "very_many" },
+  { label: "거의 없음 (월 1~2명 이하)", value: "거의 없음 (월 1~2명 이하)" },
+  { label: "가끔 있음 (월 3~10명)", value: "가끔 있음 (월 3~10명)" },
+  { label: "꾸준히 있음 (월 10~30명)", value: "꾸준히 있음 (월 10~30명)" },
+  { label: "매우 많음 (월 30명 이상)", value: "매우 많음 (월 30명 이상)" },
 ] as const;
 
 const q2Options = [
-  { label: "언어 소통 문제", value: "language" },
-  { label: "예약 관리의 번거로움", value: "reservation_management" },
-  { label: "가격 설명의 어려움", value: "price_explanation" },
-  { label: "노쇼(예약 취소) 문제", value: "no_show_cancel" },
-  { label: "결제 방식 문제", value: "payment_method" },
-  { label: "특별히 없음", value: "none" },
+  { label: "언어 소통 문제", value: "언어 소통 문제" },
+  { label: "예약 관리의 번거로움", value: "예약 관리의 번거로움" },
+  { label: "가격 설명의 어려움", value: "가격 설명의 어려움" },
+  { label: "노쇼(예약 취소) 문제", value: "노쇼(예약 취소) 문제" },
+  { label: "결제 방식 문제", value: "결제 방식 문제" },
+  { label: "특별히 없음", value: "특별히 없음" },
 ] as const;
 
 const q3Options = [
-  { label: "워크인(지나가다 방문)", value: "walk_in" },
-  { label: "SNS 검색", value: "sns" },
-  { label: "기존 고객 추천", value: "referral" },
-  { label: "여행 플랫폼(OTA 등)", value: "ota" },
-  { label: "거의 유입되지 않음", value: "almost_none" },
+  { label: "워크인(지나가다 방문)", value: "워크인(지나가다 방문)" },
+  { label: "SNS 검색", value: "SNS 검색" },
+  { label: "기존 고객 추천", value: "기존 고객 추천" },
+  { label: "여행 플랫폼(OTA 등)", value: "여행 플랫폼(OTA 등)" },
+  { label: "거의 유입되지 않음", value: "거의 유입되지 않음" },
 ] as const;
 
 const q4Options = [
-  { label: "다국어 예약 시스템", value: "multilingual_reservation" },
-  { label: "정찰제 가격 안내", value: "fair_pricing" },
-  { label: "해외 결제 시스템", value: "overseas_payment" },
-  { label: "마케팅·홍보 지원", value: "marketing_support" },
-  { label: "외국인 고객 관리 지원", value: "foreign_customer_management" },
+  { label: "다국어 예약 시스템", value: "다국어 예약 시스템" },
+  { label: "정찰제 가격 안내", value: "정찰제 가격 안내" },
+  { label: "해외 결제 시스템", value: "해외 결제 시스템" },
+  { label: "마케팅·홍보 지원", value: "마케팅·홍보 지원" },
+  { label: "외국인 고객 관리 지원", value: "외국인 고객 관리 지원" },
 ] as const;
 
 const q5Options = [
-  { label: "예약이 실제로 잘 들어오는가", value: "actual_bookings" },
-  { label: "사용이 간편한가", value: "ease_of_use" },
-  { label: "수수료가 합리적인가", value: "reasonable_fee" },
-  { label: "문제 발생 시 대응이 되는가", value: "issue_support" },
-  { label: "고객 퀄리티가 좋은가", value: "customer_quality" },
+  { label: "합리적인 수수료", value: "합리적인 수수료" },
+  { label: "우수한 고객 품질 (객단가 등)", value: "우수한 고객 품질 (객단가 등)" },
+  { label: "예약 및 관리 편의성", value: "예약 및 관리 편의성" },
+  { label: "외국인 응대 지원 (번역 등)", value: "외국인 응대 지원 (번역 등)" },
+  { label: "실제 매출 증대 가능성", value: "실제 매출 증대 가능성" },
 ] as const;
 
 type Q1Value = (typeof q1Options)[number]["value"];
@@ -84,11 +84,11 @@ type AnswersState = {
   q6: string;
 };
 
-const ALLOWED_Q1 = new Set<Q1Value>(q1Options.map((o) => o.value));
-const ALLOWED_Q2 = new Set<Q2Value>(q2Options.map((o) => o.value));
-const ALLOWED_Q3 = new Set<Q3Value>(q3Options.map((o) => o.value));
-const ALLOWED_Q4 = new Set<Q4Value>(q4Options.map((o) => o.value));
-const ALLOWED_Q5 = new Set<Q5Value>(q5Options.map((o) => o.value));
+const ALLOWED_Q1 = new Set<string>(q1Options.map((o) => o.value));
+const ALLOWED_Q2 = new Set<string>(q2Options.map((o) => o.value));
+const ALLOWED_Q3 = new Set<string>(q3Options.map((o) => o.value));
+const ALLOWED_Q4 = new Set<string>(q4Options.map((o) => o.value));
+const ALLOWED_Q5 = new Set<string>(q5Options.map((o) => o.value));
 
 const INITIAL_ANSWERS: AnswersState = {
   q1: "",
@@ -116,15 +116,15 @@ const SurveyDialog = ({
       const current = prev.q2;
 
       // "특별히 없음"은 단독 선택만 허용
-      if (value === "none") {
+      if (value === "특별히 없음") {
         return {
           ...prev,
-          q2: current.includes("none") ? [] : ["none"],
+          q2: current.includes("특별히 없음") ? [] : ["특별히 없음"],
         };
       }
 
-      // 다른 항목을 누르면 none 제거
-      let next = current.filter((v) => v !== "none");
+      // 다른 항목을 누르면 "특별히 없음" 제거
+      let next = current.filter((v) => v !== "특별히 없음");
 
       // 이미 선택된 항목이면 해제
       if (next.includes(value)) {
@@ -156,107 +156,45 @@ const SurveyDialog = ({
   };
 
   const validateBeforeSubmit = () => {
-    const companyName = basicInfo?.businessName?.trim() || "";
-    const region = basicInfo?.region?.trim() || "";
-    const category = basicInfo?.category?.trim() || "";
-    const contact = basicInfo?.contact?.trim() || "";
-    const email = basicInfo?.email?.trim() || "";
-
-    if (!companyName) return "업체명이 비어 있습니다.";
-    if (!region) return "지역이 비어 있습니다.";
-    if (!category) return "업종이 비어 있습니다.";
-    if (!contact) return "연락처가 비어 있습니다.";
-    if (!email) return "이메일이 비어 있습니다.";
-
-    if (!answers.q1 || !ALLOWED_Q1.has(answers.q1 as Q1Value)) {
-      return "Q1 응답값이 올바르지 않습니다.";
-    }
-
-    if (!Array.isArray(answers.q2) || answers.q2.length < 1 || answers.q2.length > 2) {
-      return "Q2는 1개 이상 2개 이하로 선택해주세요.";
-    }
-
-    if (!answers.q2.every((v) => ALLOWED_Q2.has(v))) {
-      return "Q2 응답값이 올바르지 않습니다.";
-    }
-
-    if (answers.q2.includes("none") && answers.q2.length > 1) {
-      return "Q2에서 '특별히 없음'은 단독 선택만 가능합니다.";
-    }
-
-    if (!answers.q3 || !ALLOWED_Q3.has(answers.q3 as Q3Value)) {
-      return "Q3 응답값이 올바르지 않습니다.";
-    }
-
-    if (!answers.q4 || !ALLOWED_Q4.has(answers.q4 as Q4Value)) {
-      return "Q4 응답값이 올바르지 않습니다.";
-    }
-
-    if (!answers.q5 || !ALLOWED_Q5.has(answers.q5 as Q5Value)) {
-      return "Q5 응답값이 올바르지 않습니다.";
-    }
-
+    if (!answers.q1 || !ALLOWED_Q1.has(answers.q1)) return "Q1 응답을 선택해주세요.";
+    if (answers.q2.length < 1 || answers.q2.length > 2) return "Q2는 1~2개를 선택해주세요.";
+    if (!answers.q2.every(v => ALLOWED_Q2.has(v))) return "Q2 응답이 올바르지 않습니다.";
+    if (!answers.q3 || !ALLOWED_Q3.has(answers.q3)) return "Q3 응답을 선택해주세요.";
+    if (!answers.q4 || !ALLOWED_Q4.has(answers.q4)) return "Q4 응답을 선택해주세요.";
+    if (!answers.q5 || !ALLOWED_Q5.has(answers.q5)) return "Q5 응답을 선택해주세요.";
     return null;
   };
 
   const submitSurvey = async () => {
-    const validationError = validateBeforeSubmit();
-    if (validationError) {
-      alert(validationError);
+    const errorMsg = validateBeforeSubmit();
+    if (errorMsg) {
+      toast.error(errorMsg);
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      const getQ1Label = (val: string) => q1Options.find(o => o.value === val)?.label || val;
-      const getQ2Labels = (vals: string[]) => vals.map(v => q2Options.find(o => o.value === v)?.label || v);
-      const getQ3Label = (val: string) => q3Options.find(o => o.value === val)?.label || val;
-      const getQ4Label = (val: string) => q4Options.find(o => o.value === val)?.label || val;
-      const getQ5Label = (val: string) => q5Options.find(o => o.value === val)?.label || val;
-
-      const payload = {
-        company_name: basicInfo?.businessName?.trim() || "",
-        region: basicInfo?.region?.trim() || "",
-        business_type: basicInfo?.category?.trim() || "",
-        phone: basicInfo?.contact?.trim() || "",
-        email: basicInfo?.email?.trim() || "",
-        q1_외국인고객비율: getQ1Label(answers.q1),
-        q2_어려움: getQ2Labels(answers.q2),
-        q3_유입경로: getQ3Label(answers.q3),
-        q4_필요한기능: getQ4Label(answers.q4),
-        q5_제휴기준: getQ5Label(answers.q5),
-        q6_참고사항: answers.q6?.trim() || "",
-        source: "landing_page_official_korean",
-        raw_payload: {
-          answers: {
-            q1: getQ1Label(answers.q1),
-            q2: getQ2Labels(answers.q2),
-            q3: getQ3Label(answers.q3),
-            q4: getQ4Label(answers.q4),
-            q5: getQ5Label(answers.q5),
-            q6: answers.q6?.trim() || "",
-          }
-        }
-      };
-
-      console.log("Submitting Korean Survey Payload...");
-
-      const { data: insertData, error } = await supabase
-        .from("partner_applications")
-        .upsert([payload], { onConflict: 'phone' })
-        .select();
+      // 1. partner_surveys 테이블에 데이터 저장
+      const { error } = await supabase
+        .from("partner_surveys")
+        .insert([{
+          application_id: applicationId,
+          q1_foreigner_ratio: answers.q1,
+          q2_difficulties: answers.q2,
+          q3_inflow_path: answers.q3,
+          q4_needed_for_expansion: answers.q4,
+          q5_selection_criteria: answers.q5,
+          q6_bad_case_memo: answers.q6?.trim() || null
+        }]);
 
       if (error) {
-        console.error("Critical Survey Error:", error);
-        alert(`저장 실패: ${error.message}`);
+        console.error("Survey Insert Error:", error);
+        toast.error("설문 저장 중 오류가 발생했습니다.");
         throw error;
       }
 
-      console.log("Survey successfully saved:", insertData);
-
-      alert("설문에 참여해 주셔서 감사합니다.");
-      toast.success("설문이 완료되었습니다. 감사합니다!");
+      toast.success("설문에 참여해 주셔서 감사합니다!");
       setSubmitted(true);
     } catch (err) {
       console.error("Survey submission failed:", err);
@@ -450,7 +388,7 @@ const SurveyDialog = ({
           {step === 4 && (
             <div className="space-y-3">
               <p className="font-semibold text-sm">
-                5. 플랫폼을 선택할 때 가장 중요하게 생각하는 기준은 무엇인가요?
+                5. 제휴 플랫폼을 선택할 때 가장 중요하게 생각하시는 기준은?
               </p>
               <RadioGroup
                 value={answers.q5}
