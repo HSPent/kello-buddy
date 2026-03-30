@@ -27,15 +27,15 @@ const FloatingPromo = () => {
 
   return (
     <>
-      <div className="fixed bottom-24 right-6 z-40 flex flex-col items-end pointer-events-none">
+      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center pointer-events-none w-max max-w-[95vw]">
         <AnimatePresence>
           {isVisible && (
             <motion.div
               layout
-              initial={{ opacity: 0, x: 50, scale: 0.8 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 50, scale: 0.8 }}
-              className="pointer-events-auto flex flex-col items-end"
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.9 }}
+              className="pointer-events-auto flex flex-col items-center"
             >
               {isMinimized ? (
                 /* Minimized Icon State */
@@ -44,53 +44,54 @@ const FloatingPromo = () => {
                   onClick={() => setIsMinimized(false)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-14 h-14 bg-white rounded-full shadow-kello-glow border-2 border-primary/20 flex items-center justify-center relative overflow-hidden group"
+                  className="w-14 h-14 bg-[#fef08a] text-amber-950 rounded-full shadow-kello-glow border-2 border-[#fde047] flex items-center justify-center relative overflow-hidden group"
                 >
                   <img 
                     src="/event-coffee.png" 
                     alt="이벤트 아이콘" 
-                    className="w-10 h-10 object-contain"
+                    className="w-10 h-10 object-contain" 
                   />
-                  <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors" />
-                  <div className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-white animate-bounce" />
+                  <div className="absolute inset-0 bg-amber-500/5 group-hover:bg-transparent transition-colors" />
+                  <div className="absolute top-0 right-0 w-3 h-3 bg-[#fde047] rounded-full border-2 border-white animate-bounce" />
                 </motion.button>
               ) : (
                 /* Expanded Card State */
                 <motion.div 
                   layoutId="promo-card"
-                  className="flex flex-col items-end"
+                  className="flex items-center"
                 >
-                  {/* Close Buton (Minimizes) */}
-                  <button
-                    onClick={() => setIsMinimized(true)}
-                    className="mb-2 p-1.5 bg-white/90 backdrop-blur-sm rounded-full shadow-md border border-border text-muted-foreground hover:text-foreground transition-colors z-10"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-
-                  <div className="bg-white rounded-[1.5rem] shadow-2xl border border-primary/10 overflow-hidden flex flex-col w-[260px] sm:w-[280px] shadow-primary/10 group">
-                    {/* Upper Section: Coffee Coupon (Click to open promo) */}
+                  <div className="bg-[#fef08a] rounded-full shadow-kello-glow border border-[#fde047] mx-auto overflow-hidden flex items-center justify-between group pointer-events-auto w-[85vw] max-w-[360px] sm:max-w-[450px]">
+                    {/* Main Content (Click to open promo) */}
                     <button
                       onClick={handleOpenPromo}
-                      className="p-3 flex items-center gap-3 text-left hover:bg-primary/5 transition-colors relative"
+                      className="py-3 px-4 sm:px-6 flex-1 flex items-center justify-center gap-3 text-left transition-all hover:bg-amber-100/50 relative"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none" />
                       <div className="relative shrink-0">
-                        <img 
-                          src="/event-coffee.png" 
-                          alt="커피 이벤트" 
-                          className="w-12 h-12 rounded-xl object-contain bg-secondary/50 shadow-sm border border-white/50"
-                        />
-                        <div className="absolute -top-1.5 -right-1.5 bg-primary text-white text-[8px] font-black px-1.5 py-0.5 rounded-full shadow-sm">
-                          BONUS
+                        <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-[#fde047]">
+                          <img 
+                            src="/event-coffee.png" 
+                            alt="커피 이벤트" 
+                            className="w-7 h-7 object-contain"
+                          />
                         </div>
                       </div>
-                      <div className="flex-1">
-                        <p className="text-[8px] font-black text-primary uppercase tracking-tighter mb-0.5 font-sans">Special Event</p>
-                        <h4 className="text-xs sm:text-sm font-black text-foreground leading-tight break-keep">
-                          지금 신청하고 설문 완료하면<br />커피 쿠폰 증정! 🎁
+                      <div className="flex flex-col">
+                        <h4 className="text-[15px] sm:text-lg font-black text-amber-950 leading-tight break-keep whitespace-nowrap">
+                          설문 완료하고 커피 쿠폰 받기 🎁
                         </h4>
                       </div>
+                    </button>
+
+                    {/* Close Button integrated */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsMinimized(true);
+                      }}
+                      className="mr-3 p-1.5 shrink-0 text-amber-900/40 hover:text-amber-900 hover:bg-amber-300/50 rounded-full transition-colors"
+                      title="축소하기"
+                    >
+                      <X className="h-5 w-5" />
                     </button>
                   </div>
                 </motion.div>

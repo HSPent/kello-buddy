@@ -15,6 +15,7 @@ import Header from "@/components/Header";
 import CherryBlossoms from "@/components/CherryBlossoms";
 import FloatingPromo from "@/components/FloatingPromo";
 import KBeautyTrendSection from "@/components/KBeautyTrendSection";
+import EarlyBirdSection from "@/components/EarlyBirdSection";
 
 const Index = () => {
   return (
@@ -26,14 +27,21 @@ const Index = () => {
       <KBeautyTrendSection />
       <div>
         <RevenueGraphSection />
-        <CustomerFlowSection />
+      </div>
+
+      <div className="py-12 md:py-20 text-center flex items-center justify-center bg-gradient-to-b from-transparent to-spring-pink relative z-20">
+        <h2 className="text-[20px] sm:text-4xl md:text-5xl lg:text-7xl font-black text-rose-500 tracking-tight drop-shadow-md">
+          하.지.만!
+        </h2>
       </div>
 
       <div id="service">
         <ProblemSection />
-        <SolutionSection />
+        <CustomerFlowSection />
         <KelloServiceStepsSection />
       </div>
+
+      <EarlyBirdSection />
 
       <SocialProofSection />
       <div id="faq">

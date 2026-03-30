@@ -36,15 +36,27 @@ const HeroSection = () => {
 
 
           <ScrollReveal delay={0.4}>
-            <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.3] sm:leading-tight text-foreground mb-6 break-keep drop-shadow-md md:whitespace-nowrap">
-              이제, 외국인 손님이 <br className="md:hidden" /> 매출이 됩니다
+            <h1 className="text-[20px] sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight mb-8 break-keep drop-shadow-xl text-center flex flex-col items-center">
+              <div className="flex items-center gap-2 sm:gap-4 mb-4 whitespace-nowrap px-4 scale-[0.9] sm:scale-100 origin-center">
+                <span className="text-black">
+                  <span className="text-primary">K</span> - beauty의 첫 H<span className="text-primary">e</span><span className="text-primary">ll</span><span className="text-primary">o</span>
+                </span>
+                <img 
+                  src="/content.png" 
+                  alt="Kello Hand" 
+                  className="h-10 w-10 sm:h-28 sm:w-28 md:h-32 md:w-32 drop-shadow-lg animate-bounce-subtle shrink-0"
+                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                />
+              </div>
+              <span className="block text-black px-4 whitespace-nowrap scale-[0.9] sm:scale-100 origin-center mt-4 sm:mt-6">
+                이제, 외국인 손님이 <span className="text-primary">매출</span>이 됩니다
+              </span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.6}>
-            <p className="text-base sm:text-lg md:text-2xl text-foreground/80 leading-relaxed mb-10 font-bold max-w-4xl mx-auto break-keep px-4">
-              K-뷰티를 찾는 외국인 관광객은 단순 시술이 아닌 <br className="sm:hidden" /> 
-              ‘프리미엄 패키지’를 선호합니다.
+            <p className="text-base sm:text-lg md:text-2xl text-black/70 leading-relaxed mb-10 font-bold max-w-4xl mx-auto break-keep px-4">
+              외국인 손님 매출을 한번에 해결할 "Kello"을 만나보세요!
             </p>
           </ScrollReveal>
 
@@ -66,42 +78,7 @@ const HeroSection = () => {
             </div>
           </ScrollReveal>
 
-          {/* Post-it Note Promotion */}
-          <motion.div
-            id="benefits"
-            initial={{ opacity: 0, y: 50, rotate: -5 }}
-            animate={{ opacity: 1, y: 0, rotate: 2 }}
-            whileHover={{ 
-              rotate: [2, 3.5, 0.5, 3, 1, 2],
-              transition: { duration: 0.8, ease: "easeInOut" }
-            }}
-            transition={{ delay: 1.2, type: "spring", stiffness: 100 }}
-            className="mt-16 w-full max-w-[calc(100vw-3rem)] sm:max-w-sm bg-[#fef08a] p-6 md:p-8 shadow-[5px_5px_15px_rgba(0,0,0,0.1)] relative border border-[#fde047] origin-top text-left cursor-default mx-auto"
-            style={{
-              borderRadius: "2px 2px 20px 5px", // Slight curl effect
-            }}
-          >
-            {/* Post-it Tape */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-8 bg-white/40 backdrop-blur-sm shadow-sm rotate-[-3deg]" />
 
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 mb-4 text-center sm:text-left">
-              <TicketPercent className="h-6 w-6 sm:h-8 sm:w-8 text-amber-600 hidden sm:block" />
-              <h3 className="text-xl sm:text-2xl font-black text-amber-900 break-keep leading-tight drop-shadow-sm">
-                2026년은 <KelloText /> 초기 파트너에게<br className="hidden sm:block" />
-                <span className="text-red-500 border-b-2 border-red-500 font-extrabold mt-1 inline-block text-2xl sm:text-3xl">무료로 제공합니다.</span>
-              </h3>
-            </div>
-
-            <p className="text-amber-900/90 font-bold leading-relaxed break-keep mb-6 text-base md:text-lg border-t border-amber-900/20 pt-4">
-              플랫폼 초기 확장을 위해<br className="hidden sm:block" />
-              2026년 동안은 제휴 매장이<br className="hidden sm:block" />
-              <KelloText /> 서비스를 무료로 사용할 수 있습니다.
-            </p>
-            <p className="text-amber-900 font-black break-keep text-lg md:text-xl drop-shadow-sm">
-              외국인 고객으로 매출상승의 기회,<br className="hidden sm:block" />
-              지금 참여하세요! ✨
-            </p>
-          </motion.div>
         </motion.div>
       </div>
     </section>
