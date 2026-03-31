@@ -127,7 +127,9 @@ const CTAFormSection = () => {
 
             <form onSubmit={handleSubmit} className="glass-card rounded-[2rem] px-5 py-10 sm:p-10 md:p-14 lg:p-20 space-y-5 sm:space-y-8 relative z-10 w-full max-w-4xl mx-auto shadow-2xl">
               <div>
-                <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">업체명</label>
+                <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">
+                  업체명<span className="text-destructive ml-1">*</span>
+                </label>
                 <input
                   type="text"
                   placeholder="예: 서울뷰티살롱"
@@ -139,7 +141,9 @@ const CTAFormSection = () => {
 
               <div className="grid grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">지역</label>
+                  <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">
+                    지역<span className="text-destructive ml-1">*</span>
+                  </label>
                   <select
                     value={form.region}
                     onChange={(e) => setForm({ ...form, region: e.target.value })}
@@ -152,7 +156,9 @@ const CTAFormSection = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">업종</label>
+                  <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">
+                    업종<span className="text-destructive ml-1">*</span>
+                  </label>
                   <select
                     value={form.category}
                     onChange={(e) => setForm({ ...form, category: e.target.value })}
@@ -167,7 +173,9 @@ const CTAFormSection = () => {
               </div>
 
               <div>
-                <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">연락처</label>
+                <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">
+                  연락처<span className="text-destructive ml-1">*</span>
+                </label>
                 <input
                   type="tel"
                   placeholder="010-0000-0000"
@@ -178,7 +186,9 @@ const CTAFormSection = () => {
               </div>
 
               <div>
-                <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">이메일 주소</label>
+                <label className="block text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">
+                  이메일 주소<span className="text-destructive ml-1">*</span>
+                </label>
                 <input
                   type="email"
                   placeholder="example@email.com"

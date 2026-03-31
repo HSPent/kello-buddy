@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -31,6 +32,8 @@ const faqs = [
 ];
 
 const FAQSection = () => {
+  const [openItems, setOpenItems] = useState<string[]>([]);
+  
   return (
     <section id="faq" className="py-24 bg-spring-mint relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 10% 20%, hsl(var(--kello-coral) / 0.04) 0%, transparent 40%), radial-gradient(circle at 90% 80%, hsl(var(--primary) / 0.04) 0%, transparent 40%)" }} />
@@ -46,7 +49,7 @@ const FAQSection = () => {
 
         <ScrollReveal width="100%" delay={0.2}>
           <div className="w-full max-w-4xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-3 sm:space-y-5">
+            <Accordion type="multiple" value={openItems} onValueChange={setOpenItems} className="space-y-3 sm:space-y-5">
               {faqs.map((faq, i) => (
                 <AccordionItem
                   key={i}

@@ -21,6 +21,127 @@ const benefits = [
   },
 ];
 
+const CategoryIcon = ({ icon }: { icon: { name: string; src: string } }) => {
+  let imageAnim = {};
+  let overlays = null;
+
+  switch (icon.name) {
+    case "헤어":
+      imageAnim = {
+        animate: { rotate: [0, 1.5, -1, 0] },
+        transition: { repeat: Infinity, duration: 6, ease: "easeInOut" }
+      };
+      overlays = (
+         <motion.div 
+          className="absolute inset-0 z-20 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none"
+          animate={{ opacity: [0.3, 0.6, 0.3] }}
+          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+        />
+      );
+      break;
+
+    case "메이크업":
+      imageAnim = {
+        animate: { y: [0, -1.5, 0] },
+        transition: { repeat: Infinity, duration: 4, ease: "easeInOut" }
+      };
+      overlays = (
+        <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden mix-blend-screen">
+          <motion.div 
+            className="absolute inset-y-0 -left-[100%] w-[200%] h-full bg-gradient-to-tr from-transparent via-white/40 to-transparent"
+            animate={{ x: ['0%', '100%'] }}
+            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", repeatDelay: 1.5 }}
+          />
+          <motion.div
+            className="absolute top-[25%] right-[25%] w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full shadow-[0_0_8px_3px_rgba(255,255,255,1)]"
+            animate={{ opacity: [0, 1, 0], scale: [0.5, 1.5, 0.5] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut", delay: 1 }}
+          />
+        </div>
+      );
+      break;
+
+    case "에스테틱":
+      imageAnim = {
+        animate: { scale: [1, 1.025, 1] },
+        transition: { repeat: Infinity, duration: 5, ease: "easeInOut" }
+      };
+      overlays = (
+        <motion.div 
+          className="absolute inset-0 z-20 bg-white mix-blend-overlay pointer-events-none"
+          animate={{ opacity: [0, 0.25, 0] }}
+          transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+        />
+      );
+      break;
+
+    case "네일":
+      imageAnim = {
+        animate: { y: [0, -2, 0] },
+        transition: { repeat: Infinity, duration: 4, ease: "easeInOut", delay: 0.5 }
+      };
+      overlays = (
+        <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden mix-blend-overlay">
+          <motion.div 
+            className="absolute inset-y-0 -left-[100%] block h-full w-[200%] -skew-x-12 bg-gradient-to-r from-transparent via-white/60 to-transparent"
+            animate={{ x: ['0%', '100%'] }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", repeatDelay: 2 }}
+          />
+          <motion.div
+            className="absolute bottom-[30%] left-[30%] w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full shadow-[0_0_8px_3px_rgba(255,255,255,1)]"
+            animate={{ opacity: [0, 1, 0], scale: [0.8, 1.5, 0.8] }}
+            transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", delay: 0.5 }}
+          />
+        </div>
+      );
+      break;
+
+    case "속눈썹":
+      imageAnim = {
+        animate: { scaleY: [1, 0.96, 1, 1, 1] },
+        transition: { 
+          repeat: Infinity, 
+          duration: 4.5, 
+          ease: "easeInOut", 
+          times: [0, 0.03, 0.06, 0.5, 1] 
+        }
+      };
+      overlays = (
+        <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden mix-blend-screen">
+           <motion.div
+            className="absolute top-[35%] right-[30%] w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full shadow-[0_0_6px_2px_rgba(255,255,255,0.9)]"
+            animate={{ opacity: [0, 0.9, 0] }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut", delay: 1.5 }}
+          />
+        </div>
+      );
+      break;
+      
+    default:
+      break;
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-2 sm:gap-4 shrink w-[18%] sm:w-32 md:w-44 lg:w-52 group">
+      <motion.div 
+        className="relative w-full aspect-square bg-white rounded-[1.2rem] sm:rounded-[2.5rem] shadow-sm cursor-pointer overflow-hidden ring-1 ring-black/5"
+        whileHover={{ scale: 1.05, y: -5, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      >
+        <motion.img 
+          src={icon.src} 
+          alt={icon.name} 
+          className="w-full h-full object-cover relative z-10 origin-center" 
+          onError={(e) => (e.currentTarget.style.display = 'none')} 
+          {...imageAnim}
+        />
+        {overlays}
+      </motion.div>
+      <span className="text-amber-900 font-black text-[11px] sm:text-base md:text-xl tracking-tight mt-1 text-center break-keep group-hover:text-primary transition-colors duration-300">{icon.name}</span>
+    </div>
+  );
+};
+
 const EarlyBirdSection = () => {
   return (
     <section className="py-24 bg-spring-yellow relative overflow-hidden" id="benefits">
@@ -51,12 +172,7 @@ const EarlyBirdSection = () => {
                 { name: "네일", src: "/네일.png" },
                 { name: "속눈썹", src: "/속눈썹.png" },
               ].map((icon) => (
-                <div key={icon.name} className="flex flex-col items-center gap-2 sm:gap-4 shrink w-[18%] sm:w-32 md:w-44 lg:w-52">
-                  <div className="w-full aspect-square bg-white rounded-[1.2rem] sm:rounded-[2.5rem] shadow-sm hover:scale-105 hover:shadow-lg hover:-translate-y-2 transition-all duration-300 cursor-pointer overflow-hidden ring-1 ring-black/5">
-                    <img src={icon.src} alt={icon.name} className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
-                  </div>
-                  <span className="text-amber-900 font-black text-[11px] sm:text-base md:text-xl tracking-tight mt-1 text-center break-keep">{icon.name}</span>
-                </div>
+                <CategoryIcon key={icon.name} icon={icon} />
               ))}
             </div>
           </div>

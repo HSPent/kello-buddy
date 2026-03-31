@@ -31,7 +31,7 @@ const FOOTER_MENUS = [
 
 // 토글(아코디언) 메뉴 컴포넌트
 const FooterMenuSection = ({ menu }: { menu: typeof FOOTER_MENUS[0] }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="w-full lg:w-48">
