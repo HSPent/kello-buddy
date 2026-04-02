@@ -123,12 +123,12 @@ const Footer = () => {
                 <p>회사명 : (주)HSP</p>
                 <p>서비스명 : 켈로</p>
                 <p>대표 : 정다영</p>
-                <p>사업자등록번호 : 000-00-00000</p>
+                <p>사업자등록번호 : 323-02-02088</p>
                 {/* <p>주소 : 서울특별시 강남구 ... (추후 추가 시 주석 해제)</p> */}
               </div>
 
               <div className="text-foreground/40 text-xs mt-auto">
-                © 2026 Kello. All rights reserved.
+                <p className="mt-1">© 2026 Kello. All rights reserved.</p>
               </div>
             </div>
 
