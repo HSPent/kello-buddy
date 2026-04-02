@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
 
 const AboutSection = () => {
   return (
@@ -28,7 +28,9 @@ const AboutSection = () => {
             className="grid md:grid-cols-2 gap-8"
           >
             <div className="bg-card rounded-2xl p-8 shadow-kello-card border border-border">
-              <Heart className="h-8 w-8 text-kello-coral mb-4" />
+              <div className="w-14 h-14 mb-4 -ml-1">
+                <img src="/kello_k_icon.png" alt="K" className="w-full h-full object-contain drop-shadow-md" />
+              </div>
               <h3 className="text-xl font-bold text-foreground mb-3">진정성</h3>
               <p className="text-muted-foreground leading-relaxed text-sm">
                 외국인 가족이 한국에서 겪은 불편함에서 출발했습니다. 
