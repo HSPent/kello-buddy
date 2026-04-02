@@ -6,7 +6,7 @@ import RevenueGraphSection from "@/components/RevenueGraphSection";
 
 import FAQSection from "@/components/FAQSection";
 import SocialProofSection from "@/components/SocialProofSection";
-import KelloServiceStepsSection from "@/components/KelloServiceStepsSection";
+
 import CTAFormSection from "@/components/CTAFormSection";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
@@ -38,7 +38,7 @@ const Index = () => {
       <div id="service">
         <ProblemSection />
         <CustomerFlowSection />
-        <KelloServiceStepsSection />
+
       </div>
 
       <EarlyBirdSection />
