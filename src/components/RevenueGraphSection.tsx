@@ -1,128 +1,109 @@
 import { motion } from "framer-motion";
 import KelloText from "./KelloText";
+import { TrendingUp } from "lucide-react";
+
+const simulationData = [
+  { guests: "월 5명", revenue: "+75만 원", percentage: 22 },
+  { guests: "월 10명", revenue: "+150만 원", percentage: 45 },
+  { guests: "월 20명", revenue: "+300만 원", percentage: 70 },
+  { guests: "월 30명", revenue: "+450만 원", percentage: 95 },
+];
 
 const RevenueGraphSection = () => {
   return (
-    <section className="py-24 bg-spring-yellow relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16 max-w-3xl mx-auto"
-        >
-          <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">Revenue Growth</span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep">
-            외국인 고객 몇 명만 늘어도 <br /> <span className="text-rose-500">매출이</span> 이렇게 <span className="text-rose-500">증가</span>합니다
-          </h2>
-          <div className="flex flex-col items-center gap-2 mb-8">
-            <p className="text-sm sm:text-base md:text-lg text-rose-500 font-bold break-keep">
-              K-뷰티를 찾는 외국인 관광객은 <br className="sm:hidden" /> 
-              단순 시술이 아닌 <br className="sm:hidden" /> 
-              '프리미엄 패키지'를 선호합니다.
-            </p>
-            <p className="text-xs sm:text-sm text-muted-foreground font-medium">
-              (Kello 예상 외국인 평균 객단가: 15만원)
-            </p>
-          </div>
-        </motion.div>
-
-        <div className="max-w-4xl mx-auto bg-white/60 backdrop-blur-md rounded-[2.5rem] px-6 py-8 sm:px-10 md:px-16 shadow-2xl border border-rose-100 relative overflow-hidden group">
-          <div className="flex flex-col items-center mb-12">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground mb-1 leading-tight break-keep text-center">
-              한 달에 딱 <span className="text-rose-500">10명</span>만 늘어도,<br className="sm:hidden" /> <span className="text-rose-600">매출 앞자리</span>가 바뀝니다.
-            </h3>
-            <div className="w-16 h-1 bg-rose-200 rounded-full mt-4" />
-          </div>
-
-          {/* Real Graph Container */}
-          <div className="relative h-64 sm:h-80 md:h-96 w-full mt-10">
-            {/* X-Axis Labels */}
-            <div className="absolute bottom-[-30px] w-full flex justify-between px-2 sm:px-10 text-xs sm:text-sm font-black text-rose-400">
-              <span>0명</span>
-              <span>5명</span>
-              <span>10명</span>
-              <span>20명</span>
-              <span>30명</span>
+    <section className="py-24 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+          
+          {/* Left Side: Text Description */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full lg:w-1/2 text-left"
+          >
+            <span className="inline-block text-sm font-bold text-[#D93644] mb-5">
+              매출 시뮬레이션
+            </span>
+            <h2 className="text-[28px] sm:text-3xl md:text-[40px] font-black text-[#222] mb-6 leading-[1.3] break-keep">
+              한달에 딱 <span className="text-[#D93644]">10명</span>만 늘어도,<br />
+              <span className="text-[#D93644]">매출</span> 앞자리가 바뀝니다.
+            </h2>
+            <div className="max-w-md">
+              <p className="text-[15px] md:text-[16px] text-[#A0A0A0] font-medium mb-8 leading-relaxed break-keep">
+                뷰티를 찾는 외국인 관광객은 단순 시술이 아닌 프리미엄 패키지를 선호합니다. <br className="hidden md:block" />
+                외국인 고객 몇 명만 늘어도 매출이 증가합니다.
+              </p>
             </div>
+            
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#F8F9FA] rounded-[10px] text-[#444] shadow-sm">
+              <TrendingUp className="w-4 h-4 text-[#D93644]" />
+              <span className="text-[15px] font-bold">
+                예상 외국인 평균 객단가: <span className="text-[#222]">15만 원</span>
+              </span>
+            </div>
+          </motion.div>
 
-            {/* The Curve Overlay (SVG) */}
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full overflow-visible">
-              <defs>
-                <linearGradient id="baseGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#94a3b8" />
-                  <stop offset="100%" stopColor="#f1f5f9" />
-                </linearGradient>
-                <linearGradient id="extraGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" />
-                  <stop offset="100%" stopColor="hsl(var(--primary) / 0.1)" />
-                </linearGradient>
-              </defs>
+          {/* Right Side: Simulation Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full lg:w-[48%]"
+          >
+            <div className="bg-[#F8F9FB] rounded-[24px] p-6 sm:p-8 md:p-10 border border-[#E9ECEF] flex flex-col h-full">
+              <h3 className="text-[16px] font-bold text-[#666] mb-8">
+                <KelloText />로 인한 월 추가 수익
+              </h3>
 
-              {/* Baseline Area */}
-              <motion.path
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-                d="M 0 100 Q 15 95, 30 90 Q 60 85, 100 80 L 100 100 L 0 100 Z"
-                fill="url(#baseGradient)"
-                className="opacity-20"
-              />
-              {/* Kello Extra Revenue Area */}
-              <motion.path
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2.5, ease: "easeInOut" }}
-                d="M 0 100 Q 15 90, 30 70 Q 60 40, 100 10 L 100 80 Q 60 85, 30 90 Q 15 95, 0 100 Z"
-                fill="url(#extraGradient)"
-              />
-              {/* Main Growth Curve Line */}
-              <motion.path
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2.5, ease: "easeInOut" }}
-                d="M 0 100 Q 15 90, 30 70 Q 60 40, 100 10"
-                fill="none"
-                stroke="hsl(var(--primary))"
-                strokeWidth="0.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+              <div className="flex justify-around items-end h-[220px] sm:h-[240px] md:h-[280px] w-full pt-4">
+                {simulationData.map((item, index) => (
+                  <div key={item.guests} className="flex flex-col items-center h-full w-full group">
+                    {/* Chart Body */}
+                    <div className="relative flex flex-col justify-end items-center h-full w-full border-b-2 border-[#E9ECEF]">
+                      {/* Floating Revenue Label */}
+                      <motion.div 
+                        className="absolute w-full flex justify-center pb-2 sm:pb-3 pointer-events-none"
+                        style={{ bottom: `${item.percentage}%` }}
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.5 + index * 0.15, ease: "easeOut" }}
+                      >
+                        <span className="text-[13px] sm:text-[16px] md:text-[19px] text-[#D93644] font-black whitespace-nowrap tracking-tighter">
+                          {item.revenue}
+                        </span>
+                      </motion.div>
 
-            {/* Floating Value Label (30 guests) */}
-            <motion.div 
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 2 }}
-              className="absolute right-0 top-[10%] -translate-y-[60%] translate-x-1/2 z-20"
-            >
-              <div className="bg-primary px-3 sm:px-4 py-1.5 rounded-full shadow-xl flex flex-col items-center animate-bounce">
-                <span className="text-[10px] font-black text-white/80 leading-none mb-0.5">30명</span>
-                <span className="text-sm sm:text-base font-black text-white">450만원</span>
-                <div className="absolute -bottom-1 w-2 h-2 bg-primary rotate-45" />
+                      {/* Bar Fill */}
+                      <motion.div
+                        className="w-[32px] sm:w-[46px] md:w-[56px] bg-gradient-to-t from-[#c92a37] to-[#f44b5b] rounded-t-xl group-hover:brightness-110 transition-all duration-300"
+                        style={{ height: `${item.percentage}%`, transformOrigin: "bottom" }}
+                        initial={{ scaleY: 0 }}
+                        whileInView={{ scaleY: 1 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.9, delay: 0.2 + index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                      />
+                    </div>
+                    
+                    {/* X-Axis Label */}
+                    <div className="mt-3 sm:mt-4 flex flex-col items-center">
+                      <span className="text-[12px] sm:text-[14px] md:text-[15px] font-bold text-[#666] whitespace-nowrap tracking-tight">{item.guests}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </motion.div>
 
-            {/* Area Labels - Centered within regions */}
-            <div className="absolute bottom-[30%] sm:bottom-[35%] left-1/2 -translate-x-1/3 text-[12px] sm:text-[18px] font-black text-rose-500/80 tracking-tight break-keep text-center drop-shadow-sm pointer-events-none w-full max-w-[150px] sm:max-w-none">
-              <KelloText />로 인한 추가 수익
+              <div className="mt-8 pt-5 text-center sm:text-left border-t border-[#E9ECEF]/60">
+                <p className="text-[11px] sm:text-[13px] text-[#A0A0A0] font-medium leading-relaxed break-keep">
+                  * 외국인 관광객 프리미엄 시술 평균 객단가 15만 원 적용 기준
+                </p>
+              </div>
             </div>
-            <div className="absolute bottom-[5%] left-[60%] -translate-x-1/2 text-[10px] sm:text-xs font-black text-slate-400 uppercase tracking-widest italic pointer-events-none">
-              기존 매출
-            </div>
-          </div>
+          </motion.div>
 
-          {/* Footer Text */}
-          <p className="mt-16 text-center text-[10px] sm:text-xs text-muted-foreground font-medium break-keep">
-            *외국인 관광객 프리미엄 시술(두피 스파, 펌, 아트 네일 등) 평균 객단가 15만 원 기준
-          </p>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
+import KelloText from "./KelloText";
 
 const AboutSection = () => {
   return (
@@ -13,7 +14,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">About Kello</span>
+            <span className="inline-block text-sm font-semibold tracking-widest uppercase mb-4 text-transparent bg-clip-text" style={{ backgroundImage: "var(--kello-gradient-hero)" }}>About Kello</span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
               가족의 불편함에서 시작된
               <br />
@@ -35,7 +36,7 @@ const AboutSection = () => {
               <p className="text-muted-foreground leading-relaxed text-sm">
                 외국인 가족이 한국에서 겪은 불편함에서 출발했습니다. 
                 언어 장벽과 인증 문제로 좋은 서비스를 이용하지 못하는 
-                관광객의 경험을 직접 목격하고, 이를 해결하기 위해 Kello을 만들었습니다.
+                관광객의 경험을 직접 목격하고, 이를 해결하기 위해 <KelloText />를 만들었습니다.
               </p>
             </div>
 

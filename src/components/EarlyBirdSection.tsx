@@ -1,25 +1,31 @@
 import { motion } from "framer-motion";
-import { Zap, Star, Video, TicketPercent, CheckCircle2 } from "lucide-react";
+import { Zap, Star, MessageSquare, TicketPercent, CheckCircle2 } from "lucide-react";
 import KelloText from "./KelloText";
 import ScrollReveal from "./ScrollReveal";
 
 const benefits = [
   {
     icon: Zap,
-    title: "2026년 이용료 0원",
-    desc: "2026년까지 모든 서비스 이용료가 면제됩니다.",
+    titleText: "2026년 이용료 0원",
+    descText: "2026년까지 모든 서비스 이용료가 면제됩니다.",
   },
   {
     icon: Star,
-    title: "상단 우선 노출 혜택",
-    desc: "K-뷰티 카테고리 최상단 노출 및 '추천 매장' 인증 마크를 부여해 드립니다.",
+    titleText: "우선 추천 및 홍보 혜택",
+    descText: "고객 데이터 기반으로 AI 추천 서비스를 제공하고 외국인에게 업체를 홍보합니다.",
   },
   {
-    icon: Video,
-    title: "숏폼 홍보 지원",
-    desc: "외국인 관광객의 시선을 끄는 숏폼 콘텐츠 제작 및 플랫폼 홍보를 지원합니다.",
+    icon: MessageSquare,
+    titleText: null,
+    titleNode: (
+      <span className="break-keep">어려운 커뮤니케이션은{" "}<KelloText />에게</span>
+    ),
+    descText: null,
+    descNode: (
+      <span className="break-keep">외국인과의 어려운 상담 및 시술 관련 설명은{" "}<KelloText />에게 한국어로 전달해주세요.</span>
+    ),
   },
-];
+] as const;
 
 const CategoryIcon = ({ icon }: { icon: { name: string; src: string } }) => {
   let imageAnim = {};
@@ -178,17 +184,26 @@ const EarlyBirdSection = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {benefits.map((b, i) => (
-            <ScrollReveal key={b.title} delay={i * 0.15} className="flex h-full w-full">
-              <div className="flex-1 glass-card rounded-[2.5rem] p-10 border-white bg-white/40 hover:-translate-y-2 transition-transform duration-500 group shadow-lg flex flex-col items-center text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white shadow-md mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-                  <b.icon className="h-8 w-8 text-primary" />
+            <ScrollReveal key={i} delay={i * 0.15} className="flex">
+              <div className="w-full glass-card rounded-[2.5rem] p-8 md:p-10 border-white bg-white/40 hover:-translate-y-2 transition-transform duration-500 group shadow-lg flex flex-col items-center text-center">
+                {/* 아이콘 박스 - 3개 동일 */}
+                <div className="flex-shrink-0 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white shadow-md mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                  <b.icon className="h-8 w-8 text-primary" strokeWidth={1.75} />
                 </div>
-                <h3 className="text-2xl font-black text-amber-900 mb-4">{b.title}</h3>
-                <p className="text-amber-900/70 font-bold leading-relaxed break-keep text-lg">
-                  {b.desc}
-                </p>
+                {/* 제목 - 최소 높이 고정으로 3개 기준선 통일 */}
+                <div className="min-h-[3.5rem] flex items-center justify-center mb-4 w-full">
+                  <h3 className="text-xl font-black text-amber-900 leading-snug break-keep text-center">
+                    {'titleNode' in b ? b.titleNode : b.titleText}
+                  </h3>
+                </div>
+                {/* 본문 - 최소 높이 고정으로 3개 기준선 통일 */}
+                <div className="min-h-[5rem] flex items-center justify-center w-full">
+                  <p className="text-amber-900/70 font-bold leading-relaxed break-keep text-base text-center">
+                    {'descNode' in b ? b.descNode : b.descText}
+                  </p>
+                </div>
               </div>
             </ScrollReveal>
           ))}

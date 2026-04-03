@@ -70,6 +70,12 @@ const reviews = [
     text: "아직 초기라서 더 눈길이 가는 것 같아요~ 함께 잘 성장 했으면 좋겠습니다~ 오히려 이런 때 먼저 참여해보는 것도 괜찮겠다 싶어서 설문도 참여하고 해봅니다~ 번창하세요!",
     rating: 5,
   },
+  {
+    name: "사전 신청 매장",
+    role: "부산 서면 O O 브로우 👁️",
+    text: "Kello..? ㅋㅋ Hello Korea 합친 말 인가요?ㅋㅋ",
+    rating: 4.5,
+  },
 ];
 
 
@@ -135,9 +141,26 @@ const SocialProofSection = () => {
             >
               <MessageSquareQuote className="absolute top-4 right-4 h-8 w-8 text-primary/10 group-hover:text-primary/20 transition-colors" />
               <div className="flex items-center gap-1 mb-4">
-                {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-kello-gold text-kello-gold" />
-                ))}
+                {[...Array(5)].map((_, i) => {
+                  const starIdx = i + 1;
+                  const isHalf = starIdx === Math.ceil(review.rating) && review.rating % 1 !== 0;
+                  const isFull = starIdx <= Math.floor(review.rating);
+                  
+                  if (isFull) {
+                    return <Star key={i} className="h-4 w-4 fill-kello-gold text-kello-gold" />;
+                  } else if (isHalf) {
+                    return (
+                      <div key={i} className="relative">
+                        <Star className="h-4 w-4 text-kello-gold" />
+                        <div className="absolute inset-0 overflow-hidden w-[50%]">
+                          <Star className="h-4 w-4 fill-kello-gold text-kello-gold" />
+                        </div>
+                      </div>
+                    );
+                  } else {
+                    return <Star key={i} className="h-4 w-4 text-kello-gold/20" />;
+                  }
+                })}
               </div>
               <p className="text-foreground font-medium leading-relaxed mb-6 break-keep min-h-[4.5rem]">
                 "{review.text}"

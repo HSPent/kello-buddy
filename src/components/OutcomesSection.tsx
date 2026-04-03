@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TrendingUp, ShieldCheck, Clock } from "lucide-react";
+import KelloText from "./KelloText";
 
 const outcomes = [
   {
@@ -35,7 +36,7 @@ const OutcomesSection = () => {
         >
           <span className="inline-block text-sm font-semibold text-primary tracking-widest uppercase mb-4">Outcomes</span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-            Kello 도입 후 기대 성과
+            <KelloText /> 도입 후 기대 성과
           </h2>
         </motion.div>
 

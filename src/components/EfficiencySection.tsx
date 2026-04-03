@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import KelloText from "./KelloText";
 
 const rows = [
   { label: "외국인 응대", normal: "번역기 씨름", kello: "자동 번역 응대" },
@@ -28,7 +29,7 @@ const EfficiencySection = () => {
           <h2 className="text-3xl md:text-4xl font-extrabold text-background flex items-center justify-center gap-3 md:gap-4 flex-wrap">
             <span>일반 예약</span>
             <span className="inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary text-primary-foreground text-base md:text-lg font-black shadow-lg">VS</span>
-            <span>Kello 예약</span>
+            <span><KelloText /> 예약</span>
           </h2>
         </motion.div>
 
@@ -101,7 +102,7 @@ const EfficiencySection = () => {
 
             <div className="relative z-10">
               <div className="p-4 md:p-6 text-center border-b border-primary-foreground/15">
-                <h3 className="text-lg md:text-xl font-bold text-primary-foreground">Kello 예약</h3>
+                <h3 className="text-lg md:text-xl font-bold text-primary-foreground"><KelloText /> 예약</h3>
               </div>
               <div className="divide-y divide-primary-foreground/15">
                 {rows.map((row) => (

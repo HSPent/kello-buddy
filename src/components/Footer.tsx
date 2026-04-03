@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import TermsOfService from "./TermsOfService";
 import ScrollReveal from "./ScrollReveal";
+import KelloText from "./KelloText";
 
 // 데이터 배열: 추후 항목 추가/수정 및 실제 링크(#) 교체가 쉽도록 분리해 둠
 const FOOTER_MENUS = [
@@ -128,7 +129,7 @@ const Footer = () => {
               </div>
 
               <div className="text-foreground/40 text-xs mt-auto">
-                <p className="mt-1">© 2026 Kello. All rights reserved.</p>
+                <p className="mt-1">© 2026 <span className="font-bold">Kello</span>. All rights reserved.</p>
               </div>
             </div>
 

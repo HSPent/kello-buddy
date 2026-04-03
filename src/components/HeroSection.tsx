@@ -37,7 +37,7 @@ const HeroSection = () => {
 
 
             <ScrollReveal delay={0.4}>
-              <h1 className="text-[20px] sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight mb-8 break-keep drop-shadow-xl text-center flex flex-col items-center">
+              <h1 className="text-[20px] sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight mb-16 break-keep drop-shadow-xl text-center flex flex-col items-center">
                 <div className="flex items-center gap-2 sm:gap-4 mb-4 whitespace-nowrap px-4 scale-[0.8] sm:scale-[0.95] origin-center">
                   <span className="text-black">
                     <span className="text-primary">K</span> - beauty의 첫 H<span className="text-primary">e</span><span className="text-primary">ll</span><span className="text-primary">o</span>
@@ -56,9 +56,10 @@ const HeroSection = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={0.6}>
-              <p className="text-base sm:text-lg md:text-2xl text-black/70 leading-relaxed mb-10 font-bold max-w-4xl mx-auto break-keep px-4">
-                외국인 손님 매출을 한번에 해결할 "Kello"을 만나보세요!
-              </p>
+              <div className="text-sm sm:text-base md:text-xl text-black/70 leading-snug md:leading-relaxed mb-10 font-bold max-w-4xl mx-auto break-keep px-4 flex flex-col items-center justify-center gap-1.5 md:gap-2">
+                <p>다국어 AI 번역, 100% 선결제, 노쇼 제로,</p>
+                <p>영어를 못해도, 외국인 고객을 받을 수 있습니다.</p>
+              </div>
             </ScrollReveal>
 
             <ScrollReveal delay={0.8}>

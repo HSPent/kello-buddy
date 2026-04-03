@@ -7,21 +7,21 @@ const steps = [
     icon: Search,
     num: "1",
     title: <>매장 발견</>,
-    desc: "외국인이 여행 준비 중 Kello 플랫폼에서 예약 가능한 매장 발견",
+    desc: <>외국인이 여행 준비 중 <KelloText /> 플랫폼에서 예약 가능한 매장 발견</>,
     color: "from-blue-400 to-blue-600",
   },
   {
     icon: Calendar,
     num: "2",
     title: <>예약</>,
-    desc: "Kello 플랫폼에서 날짜와 시술을 선택하고 간편하게 예약",
+    desc: <><KelloText /> 플랫폼에서 날짜와 시술을 선택하고 간편하게 예약</>,
     color: "from-kello-gold to-accent",
   },
   {
     icon: CreditCard,
     num: "3",
     title: <>선결제</>,
-    desc: "현장 결제 부담 없고 노쇼 없는 100% Kello 선결제 완료",
+    desc: <>현장 결제 부담 없고 노쇼 없는 100% <KelloText /> 선결제 완료</>,
     color: "from-rose-400 to-rose-600",
   },
   {
@@ -35,7 +35,7 @@ const steps = [
     icon: CheckCircle2,
     num: "5",
     title: <>서비스 완료</>,
-    desc: "서비스 완료 후 Kello에서 업체로 결제",
+    desc: <>서비스 완료 후 <KelloText />에서 업체로 결제</>,
     color: "from-purple-400 to-purple-600",
   },
 ];

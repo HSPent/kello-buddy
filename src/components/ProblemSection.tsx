@@ -87,11 +87,11 @@ const ProblemSection = () => {
                       <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                     <h3 className="text-[18px] sm:text-[19px] lg:text-[21px] font-extrabold text-foreground break-keep leading-tight">
-                      언어 장벽 없는<br className="hidden md:block"/> 매끄러운 연결
+                      언어 장벽 없는 매끄러운 연결
                     </h3>
                   </div>
                   <p className="text-slate-600 font-semibold text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed break-keep">
-                    외국인 고객이 자국어로 Kello에서 편하게 샵을 둘러보고 예약하면, 원장님은 직관적인 시스템을 통해 예약 내역과 결제 완료 상태만 확인하시면 됩니다.
+                    외국인 고객이 <KelloText />가 추천해주는 업체로 예약하면, 원장님은 직관적인 시스템을 통해 예약 내역과 결제 완료 상태만 확인하시면 됩니다.
                   </p>
                 </div>
 
@@ -104,12 +104,12 @@ const ProblemSection = () => {
                           <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
                         </div>
                         <div className="flex flex-col gap-1">
-                          <span className="bg-primary/5 text-primary text-[13px] sm:text-[14px] font-bold px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full w-max border border-primary/20">인증 장벽 해결</span>
+
                           <h3 className="text-[18px] sm:text-[19px] lg:text-[21px] font-extrabold text-foreground break-keep tracking-tight">글로벌 선결제 시스템</h3>
                         </div>
                       </div>
                       <p className="text-rose-500 font-bold text-[17px] sm:text-[18px] lg:text-[19px] mt-0.5 break-keep tracking-tight leading-snug">
-                        Kello가 선결제를 통해 분쟁을 해결합니다. <br />
+                        <KelloText />가 선결제를 통해 분쟁을 해결합니다. <br />
                         <strong className="font-extrabold">노쇼(No-Show) 스트레스 제로!</strong>
                       </p>
                     </div>
@@ -117,7 +117,7 @@ const ProblemSection = () => {
                   
                   <div className="flex flex-col space-y-2.5 sm:space-y-3 bg-slate-50 p-3 sm:p-3.5 lg:p-4 rounded-[1.25rem] border border-slate-100/50 text-slate-700">
                     <p className="font-medium text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed break-keep">
-                      Kello는 해외 신용카드 및 글로벌 간편 결제 시스템을 완벽하게 지원합니다. 
+                      <KelloText />는 해외 신용카드 및 글로벌 간편 결제 시스템을 완벽하게 지원합니다. 
                       고객이 자국에서 쓰던 결제 수단으로 예약금 또는 전액을 <span className="text-rose-500 font-bold">'선결제'</span>해야만 예약 확정이 가능합니다.
                     </p>
                     <p className="font-semibold text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed break-keep">
@@ -133,11 +133,11 @@ const ProblemSection = () => {
                   
                   <div className="relative z-10 flex flex-col items-center">
                     <h3 className="text-[18px] sm:text-[19px] lg:text-[23px] font-extrabold mb-4 sm:mb-5 drop-shadow-md break-keep leading-tight tracking-tight">
-                      🤝 Kello와 함께,<br /> 샵의 무대를 전 세계로 넓히세요.
+                      🤝 <span className="text-white font-black">Kello</span>와 함께,<br /> 샵의 무대를 전 세계로 넓히세요.
                     </h3>
                     <div className="max-w-4xl mx-auto space-y-2.5 md:space-y-3">
                       <p className="text-white/90 font-semibold text-[16px] sm:text-[17px] lg:text-[18px] leading-relaxed break-keep">
-                        복잡한 예약과 결제, 노쇼 방지까지 모두 Kello가 책임지겠습니다.
+                        복잡한 예약과 결제, 노쇼 방지까지 모두 <span className="text-white font-black">Kello</span>가 책임지겠습니다.
                       </p>
                       <p className="text-white font-extrabold text-[17px] sm:text-[18px] lg:text-[19px] leading-relaxed break-keep pb-2.5 sm:pb-4">
                         원장님은 훌륭한 K-뷰티 서비스만 준비해 주세요.
