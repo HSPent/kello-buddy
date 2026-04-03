@@ -16,6 +16,7 @@ import CherryBlossoms from "@/components/CherryBlossoms";
 import FloatingPromo from "@/components/FloatingPromo";
 import KBeautyTrendSection from "@/components/KBeautyTrendSection";
 import EarlyBirdSection from "@/components/EarlyBirdSection";
+import AppPreviewSection from "@/components/AppPreviewSection";
 
 const Index = () => {
   return (
@@ -41,6 +42,7 @@ const Index = () => {
 
       </div>
 
+      <AppPreviewSection />
       <EarlyBirdSection />
 
       <SocialProofSection />

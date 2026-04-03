@@ -70,6 +70,18 @@ export default {
           coral: "hsl(var(--kello-coral))",
           green: "hsl(var(--kello-green))",
         },
+        charcoal: {
+          50:  "#F8F9FA",
+          100: "#F1F3F5",
+          200: "#E9ECEF",
+          300: "#DEE2E6",
+          400: "#ADB5BD",
+          500: "#6C757D",
+          600: "#495057",
+          700: "#343A40",
+          800: "#212529",
+          900: "#111518",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
