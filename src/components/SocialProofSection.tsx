@@ -81,7 +81,7 @@ const reviews = [
 
 const SocialProofSection = () => {
   return (
-    <section className="py-24 bg-kello-blue-light relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-kello-blue-light relative overflow-hidden">
       <div className="absolute top-20 right-0 w-96 h-96 bg-kello-gold/5 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
       <div className="container mx-auto px-6">
@@ -137,7 +137,7 @@ const SocialProofSection = () => {
           {[...reviews, ...reviews].map((review, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-[450px] bg-white rounded-3xl p-8 border border-border/50 shadow-sm relative group hover:shadow-md transition-shadow"
+              className="flex-shrink-0 w-[300px] sm:w-[380px] md:w-[450px] bg-white rounded-3xl p-5 sm:p-8 border border-border/50 shadow-sm relative group hover:shadow-md transition-shadow"
             >
               <MessageSquareQuote className="absolute top-4 right-4 h-8 w-8 text-primary/10 group-hover:text-primary/20 transition-colors" />
               <div className="flex items-center gap-1 mb-4">

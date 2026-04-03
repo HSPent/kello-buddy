@@ -109,18 +109,18 @@ const CTAFormSection = () => {
   };
 
   return (
-    <section id="cta" className="py-24 bg-card relative overflow-hidden border-t border-border">
+    <section id="cta" className="py-16 sm:py-24 bg-card relative overflow-hidden border-t border-border">
       <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="container mx-auto px-6 max-w-[1800px] relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 max-w-[1800px] relative z-10">
         <ScrollReveal width="100%">
           <div className="w-full mx-auto">
             <div className="text-center mb-16 max-w-5xl mx-auto">
               <span className="inline-block text-base sm:text-lg lg:text-xl font-bold text-primary tracking-widest uppercase mb-4">Partner Application</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6 break-keep leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-6 break-keep leading-tight">
                 지금 <KelloText />와 함께<br />
                 새로운 매출을 만들어보세요
               </h2>
-              <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-medium break-keep mt-6">
+              <p className="text-base sm:text-xl md:text-2xl text-muted-foreground font-medium break-keep mt-4 sm:mt-6">
                 <KelloText />와 함께 외국인 고객을 매장으로 연결하세요.
               </p>
             </div>

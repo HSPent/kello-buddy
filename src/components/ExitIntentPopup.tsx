@@ -56,12 +56,12 @@ const ExitIntentPopup = () => {
             🎁 파트너 신청 이벤트
           </AlertDialogTitle>
           <AlertDialogDescription className="text-base leading-relaxed text-muted-foreground text-center flex flex-col items-center justify-center pt-2">
-            <img src="/event-coffee.png" alt="메가커피 기프티콘 증정" className="w-full max-w-[240px] rounded-2xl mb-6 shadow-sm object-contain" />
+            <img src="/커피 기프티콘과 아이스 아메리카노.png" alt="스타벅스 커피 기프티콘 증정" className="w-full max-w-[240px] rounded-2xl mb-6 shadow-sm object-contain" />
             <span className="font-semibold text-foreground mb-4">
-              지금 파트너 등록을 완료하면<br />선착순 50분께 메가커피 쿠폰을 드립니다.
+              지금 파트너 등록을 완료하면<br />추첨을 통해 스타벅스 커피 쿠폰을 드립니다.
             </span>
             <span>
-              외국인 고객 예약도 받고<br />시원한 커피도 받아가세요!
+              매출도 올리고<br />시원한 커피도 받아가세요!
             </span>
             <span className="text-sm font-bold text-primary mt-4 bg-primary/10 px-3 py-1 rounded-full">
               (1분 등록)

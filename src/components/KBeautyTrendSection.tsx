@@ -206,7 +206,7 @@ const getCardAnimation = (index: number) => {
 
 const KBeautyTrendSection = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#FFF5F7] to-[#FFE3EC] relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#FFF5F7] to-[#FFE3EC] relative overflow-hidden">
       <div className="absolute top-10 left-10 opacity-20 pointer-events-none">🌸</div>
       <div className="absolute bottom-20 right-10 opacity-20 pointer-events-none text-2xl">🌸</div>
       <div className="absolute top-1/2 right-1/4 opacity-10 pointer-events-none text-xl">✨</div>
@@ -214,7 +214,7 @@ const KBeautyTrendSection = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 w-full max-w-[1500px]">
         <ScrollReveal width="100%">
           <div className="text-center mb-16">
-            <h2 className="text-[28px] sm:text-4xl md:text-5xl font-black text-foreground mb-4 break-keep">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-4 break-keep">
               글로벌 관광객 유입과 <br className="sm:hidden" /> <span className="text-rose-500">K-뷰티 소비 트렌드</span>
             </h2>
             <p className="text-base sm:text-xl font-bold text-muted-foreground break-keep">
@@ -230,7 +230,7 @@ const KBeautyTrendSection = () => {
               <motion.div
                 key={i}
                 animate={getCardAnimation(i)}
-                className="w-full h-[360px] sm:h-[390px] flex flex-col items-center text-center relative bg-white/95 backdrop-blur-3xl rounded-[2rem] p-5 lg:p-7 border border-[#FDE1E8] shadow-sm transform-gpu"
+                className="w-full h-[300px] sm:h-[360px] sm:h-[390px] flex flex-col items-center text-center relative bg-white/95 backdrop-blur-3xl rounded-[2rem] p-4 sm:p-5 lg:p-7 border border-[#FDE1E8] shadow-sm transform-gpu"
               >
                 {/* ── Header Area ── */}
                 <div className="flex flex-col items-center w-full mb-3 mt-1 sm:mb-5">

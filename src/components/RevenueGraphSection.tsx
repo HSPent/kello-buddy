@@ -11,8 +11,8 @@ const simulationData = [
 
 const RevenueGraphSection = () => {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+    <section className="py-16 sm:py-24 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           
           {/* Left Side: Text Description */}

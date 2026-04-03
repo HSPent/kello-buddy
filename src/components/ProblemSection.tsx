@@ -7,17 +7,17 @@ const ProblemSection = () => {
   return (
     <>
       {/* --- PAGE 1: 문제 제기 --- */}
-      <section className="py-24 md:py-32 bg-spring-pink relative overflow-hidden">
+      <section className="py-16 sm:py-24 md:py-32 bg-spring-pink relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-kello-coral/5 rounded-full blur-[100px] -translate-y-1/3" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] translate-y-1/3" />
         
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 max-w-7xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 max-w-7xl">
           <ScrollReveal width="100%">
             <div className="w-full text-center mx-auto">
               
               {/* 상단 제목을 크고 웅장하지만 세련되게 */}
               <div className="bg-primary/5 border-l-[6px] sm:border-l-8 border-primary p-4 sm:p-6 lg:p-8 rounded-r-2xl sm:rounded-r-3xl mb-12 sm:mb-16 text-left max-w-fit mx-auto shadow-sm">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-foreground leading-tight tracking-tight break-keep">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground leading-tight tracking-tight break-keep">
                   "사장님들 외국인 고객손님 불편하셨죠?"
                 </h2>
               </div>
@@ -59,20 +59,20 @@ const ProblemSection = () => {
       </section>
 
       {/* --- PAGE 2: Kello 해결책 --- */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-spring-pink/30 via-orange-50/40 to-white relative overflow-hidden">
+      <section className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-spring-pink/30 via-orange-50/40 to-white relative overflow-hidden">
         <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-kello-gold/5 rounded-full blur-[120px] pointer-events-none" />
         
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 max-w-7xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 max-w-7xl">
           <ScrollReveal width="100%">
             <div className="w-full text-center mx-auto">
               
               {/* 해결책 진입 문구 */}
               <div className="mb-12 sm:mb-20 text-center break-keep">
-                <strong className="text-primary text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight drop-shadow-md block mb-3 sm:mb-4">
+                <strong className="text-primary text-3xl sm:text-4xl font-black tracking-tight drop-shadow-md block mb-3 sm:mb-4">
                   <KelloText />는 이 문제를 
                 </strong>
-                <strong className="text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight drop-shadow-sm block">
+                <strong className="text-foreground text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight drop-shadow-sm block">
                   완벽하게 <span className="text-primary">해결</span>합니다.
                 </strong>
               </div>

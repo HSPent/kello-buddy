@@ -150,15 +150,15 @@ const CategoryIcon = ({ icon }: { icon: { name: string; src: string } }) => {
 
 const EarlyBirdSection = () => {
   return (
-    <section className="py-24 bg-spring-yellow relative overflow-hidden" id="benefits">
+    <section className="py-16 sm:py-24 bg-spring-yellow relative overflow-hidden" id="benefits">
       {/* Decorative floral elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-kello-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <ScrollReveal width="100%">
-          <div className="text-center mb-16 max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-black text-amber-900 mb-8 break-keep leading-[1.15]">
+          <div className="text-center mb-10 sm:mb-16 max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-amber-900 mb-8 break-keep leading-[1.15]">
               2026년은 <KelloText /> 뷰티 파트너에게<br className="hidden md:block" /> 
               <span className="text-primary border-b-4 border-primary">무료로 제공합니다.</span>
             </h2>
@@ -170,7 +170,7 @@ const EarlyBirdSection = () => {
             </div>
 
             {/* K-Beauty Category Icons - Moved below */}
-            <div className="flex justify-center items-start flex-nowrap gap-2 sm:gap-6 md:gap-10 lg:gap-12 mt-12 w-full max-w-[1400px] mx-auto px-4">
+            <div className="flex justify-center items-start flex-nowrap gap-1.5 sm:gap-6 md:gap-10 lg:gap-12 mt-8 sm:mt-12 w-full max-w-[1400px] mx-auto px-2 sm:px-4">
               {[
                 { name: "헤어", src: "/헤어.png" },
                 { name: "메이크업", src: "/메이크업.png" },
@@ -184,7 +184,7 @@ const EarlyBirdSection = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 max-w-6xl mx-auto">
           {benefits.map((b, i) => (
             <ScrollReveal key={i} delay={i * 0.15} className="flex">
               <div className="w-full glass-card rounded-[2.5rem] p-8 md:p-10 border-white bg-white/40 hover:-translate-y-2 transition-transform duration-500 group shadow-lg flex flex-col items-center text-center">

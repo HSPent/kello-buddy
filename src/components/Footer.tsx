@@ -105,9 +105,9 @@ const FooterMenuSection = ({ menu }: { menu: typeof FOOTER_MENUS[0] }) => {
 
 const Footer = () => {
   return (
-    <footer className="bg-spring-pink py-12 border-t border-border/50">
+    <footer className="bg-spring-pink py-10 sm:py-12 border-t border-border/50">
       <ScrollReveal width="100%">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-8">
             
             {/* 푸터 왼쪽 영역: 회사 정보 */}

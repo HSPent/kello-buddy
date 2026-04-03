@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <section className="bg-white flex flex-col w-full relative">
       {/* Top Video Area */}
-      <div className="relative w-full h-[45vh] lg:h-[55vh]">
+      <div className="relative w-full h-[35vh] sm:h-[45vh] lg:h-[55vh]">
         <video
           autoPlay
           muted
@@ -27,7 +27,7 @@ const HeroSection = () => {
 
       {/* Content Area Below the Video - Subtle background contrast */}
       <div className="w-full bg-gradient-to-b from-white to-rose-50/30">
-        <div className="container relative z-10 mx-auto px-6 pb-24 pt-12 md:pb-32 flex flex-col items-center text-center">
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 pb-16 pt-8 sm:pb-24 sm:pt-12 md:pb-32 flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ const HeroSection = () => {
             <ScrollReveal delay={0.8}>
               <button
                 onClick={() => window.dispatchEvent(new Event('open-promo-popup'))}
-                className="inline-flex items-center gap-2 bg-gradient-accent text-accent-foreground font-bold px-6 py-4 md:px-8 md:py-5 rounded-full text-base md:text-xl shadow-kello-glow hover:scale-105 transition-transform relative z-10"
+                className="inline-flex items-center gap-2 bg-gradient-accent text-accent-foreground font-bold px-5 py-3.5 sm:px-6 sm:py-4 md:px-8 md:py-5 rounded-full text-base md:text-xl shadow-kello-glow hover:scale-105 transition-transform relative z-10 w-full sm:w-auto justify-center"
               >
                 <Phone className="h-5 w-5 md:h-6 md:w-6" />
                 외국인 고객 받고 매출 올리기

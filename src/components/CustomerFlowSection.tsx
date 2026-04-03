@@ -42,10 +42,10 @@ const steps = [
 
 const CustomerFlowSection = () => {
   return (
-    <section className="py-24 bg-spring-purple relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-spring-purple relative overflow-hidden">
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-kello-gold/5 rounded-full blur-3xl" />
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ const CustomerFlowSection = () => {
           className="text-center mb-16 max-w-3xl mx-auto relative z-10"
         >
           <span className="inline-block text-sm font-bold text-primary tracking-widest uppercase mb-4">How it works</span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-4 sm:mb-6 leading-tight break-keep">
             외국인 고객은 이렇게<br className="hidden sm:block" />매장을 찾습니다
           </h2>
         </motion.div>

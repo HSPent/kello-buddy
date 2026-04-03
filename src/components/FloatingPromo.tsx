@@ -27,7 +27,7 @@ const FloatingPromo = () => {
 
   return (
     <>
-      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center pointer-events-none w-max max-w-[95vw]">
+      <div className="fixed bottom-20 sm:bottom-10 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center pointer-events-none w-max max-w-[95vw]">
         <AnimatePresence>
           {isVisible && (
             <motion.div
