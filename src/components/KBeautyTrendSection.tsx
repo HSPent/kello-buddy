@@ -137,9 +137,9 @@ const KBeautyTrendSection = () => {
       )
     },
     {
-      title: "미용·뷰티 이용자 수 및 비중",
+      title: "외국인 뷰티 이용자 수 및 비중",
       mainVal: "약 250만 명",
-      subTitle: "미용 서비스 이용자 수",
+      subTitle: "뷰티 서비스 이용자 수",
       content: (active: boolean, started: boolean, reset: boolean) => (
         <div className="flex flex-col items-center w-full h-full justify-center min-h-[140px] mt-auto">
           <div className="flex items-center justify-center gap-4 w-full">
@@ -168,7 +168,7 @@ const KBeautyTrendSection = () => {
       )
     },
     {
-      title: "1인당 미용 목적 평균 지출",
+      title: "1인당 뷰티 목적 평균 지출",
       mainVal: "153만 원",
       subTitle: "결제 데이터 분석",
       content: (active: boolean, started: boolean, reset: boolean) => (
@@ -185,7 +185,7 @@ const KBeautyTrendSection = () => {
           >
             <div className="w-10 h-10 shrink-0 rounded-xl bg-primary/10 flex items-center justify-center text-xl">💳</div>
             <div className="text-left flex-1">
-              <p className="text-[11px] font-bold text-muted-foreground">외국인 미용목적 결제액</p>
+              <p className="text-[11px] font-bold text-muted-foreground">외국인 뷰티 목적 결제액</p>
               <p className="text-[16px] font-black text-primary leading-tight">153만 원</p>
             </div>
           </motion.div>
@@ -210,7 +210,7 @@ const KBeautyTrendSection = () => {
     {
       title: "이용객 및 매출 성장 곡선",
       mainVal: "폭발적 성장",
-      subTitle: "미용·뷰티 분야 매출 추이",
+      subTitle: "뷰티 분야 매출 추이",
       content: (active: boolean, started: boolean, reset: boolean) => (
         <div className="w-[115%] h-full flex flex-col items-center justify-end pb-2 mt-auto relative">
           <motion.img 
