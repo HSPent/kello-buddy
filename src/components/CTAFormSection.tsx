@@ -79,10 +79,10 @@ const CTAFormSection = () => {
 
       setPendingBasicInfo({ ...form });
       setShowBridge(true);
-    } catch (err: unknown) {
+    } catch (err: any) {
       console.error("Full Submission Exception:", err);
-      // 추가된 에러 표출 (사용자가 어떤 에러인지 파악할 수 있게)
-      const errorMsg = err instanceof Error ? err.message : "알 수 없는 에러가 발생했습니다.";
+      // Supabase PostgrestError는 instanceof Error가 아닐 수 있으므로 .message를 직접 확인
+      const errorMsg = err?.message || (typeof err === 'string' ? err : "알 수 없는 에러가 발생했습니다.");
       toast.error(`신청 중 오류가 발생했습니다: ${errorMsg}`);
     } finally {
       setIsSubmitting(false);

@@ -7,20 +7,13 @@ import ScrollReveal from "./ScrollReveal";
 const HeroSection = () => {
   return (
     <section className="bg-white flex flex-col w-full relative">
-      {/* Top Video Area */}
+      {/* Top Image Area */}
       <div className="relative w-full h-[35vh] sm:h-[45vh] lg:h-[55vh]">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={heroBg}
+        <img 
+          src="/KELLO.png" 
+          alt="KELLO 브랜드 이미지" 
           className="w-full h-full object-cover"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-          {/* Fallback if video tag is not supported */}
-          <img src={heroBg} alt="한국 거리를 즐기는 외국인 관광객들" className="w-full h-full object-cover" />
-        </video>
+        />
         {/* Soft gradient to blend with the white background below */}
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
       </div>

@@ -196,8 +196,10 @@ const SurveyDialog = ({
 
       toast.success("설문에 참여해 주셔서 감사합니다!");
       setSubmitted(true);
-    } catch (err) {
+    } catch (err: any) {
       console.error("Survey submission failed:", err);
+      const errorMsg = err?.message || (typeof err === 'string' ? err : "알 수 없는 에러가 발생했습니다.");
+      toast.error(`설문 저장 중 오류가 발생했습니다: ${errorMsg}`);
     } finally {
       setIsSubmitting(false);
     }

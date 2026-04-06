@@ -59,7 +59,7 @@ const KBeautyTrendSection = () => {
         }
         return prev + 1;
       });
-    }, 3500); // Faster cycle: 3.5 seconds
+    }, 2500); // Increased cycle speed: 2.5 seconds
     return () => clearInterval(timer);
   }, []);
 
@@ -103,15 +103,22 @@ const KBeautyTrendSection = () => {
 
               {/* "?" Tooltip */}
               <foreignObject x="105" y="-18" width="30" height="30">
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center overflow-visible">
                   <motion.div 
-                    className="bg-rose-500 text-white text-[13px] font-black w-7 h-7 rounded-lg shadow-lg flex items-center justify-center leading-none relative"
+                    className="bg-rose-500 text-white text-[11px] font-black rounded-full shadow-lg flex items-center justify-center relative aspect-square flex-shrink-0 shrink-0"
+                    style={{ 
+                      width: "22px", 
+                      height: "22px",
+                      minWidth: "22px",
+                      minHeight: "22px",
+                      transformOrigin: "center center" 
+                    }}
                     initial={{ scale: 0, y: 10, rotate: -10 }}
                     animate={reset ? { scale: 0 } : (started ? { scale: 1, y: 0, rotate: 0 } : { scale: 0, y: 10, rotate: -10 })}
                     transition={{ type: "spring", delay: active ? 1.5 : 0, stiffness: 350, damping: 18 }}
                   >
-                    ?
-                    <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-2 h-2 bg-rose-500 rotate-45" />
+                    <span className="relative z-10 flex items-center justify-center leading-none">?</span>
+                    <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-rose-500 rotate-45" />
                   </motion.div>
                 </div>
               </foreignObject>
@@ -205,17 +212,17 @@ const KBeautyTrendSection = () => {
       mainVal: "폭발적 성장",
       subTitle: "미용·뷰티 분야 매출 추이",
       content: (active: boolean, started: boolean, reset: boolean) => (
-        <div className="w-full h-full flex flex-col items-center justify-end pb-2 mt-auto">
+        <div className="w-[115%] h-full flex flex-col items-center justify-end pb-2 mt-auto relative">
           <motion.img 
             src="/beauty-growth.png.png" 
             alt="뷰티 소비 급상승" 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={reset ? { scale: 0.8, opacity: 0 } : (started ? { 
-              scale: active ? [0.85, 1.03, 1] : 1, 
+            initial={{ scale: 1.0, opacity: 0.25 }}
+            animate={reset ? { scale: 1.0, opacity: 0.25 } : (started ? { 
+              scale: active ? [1.05, 1.15, 1.1] : 1.1, 
               opacity: 1 
-            } : { scale: 0.8, opacity: 0 })}
+            } : { scale: 1.0, opacity: 0.25 })}
             transition={{ duration: 1.0, ease: "easeOut", delay: active ? 0.2 : 0 }}
-            className="w-full h-auto max-h-[150px] object-contain object-bottom drop-shadow-[0_12px_24px_rgba(217,54,68,0.15)]"
+            className="w-full h-auto max-h-[170px] sm:max-h-[190px] object-contain object-bottom drop-shadow-[0_12px_24px_rgba(217,54,68,0.15)] origin-bottom -mb-2"
           />
         </div>
       )

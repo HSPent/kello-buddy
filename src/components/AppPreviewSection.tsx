@@ -141,7 +141,10 @@ const AppPreviewSection = () => {
                 >
                   {current.desc}
                 </p>
-                <button className="inline-flex items-center gap-2 text-primary font-semibold hover:text-rose-600 transition-colors">
+                <button 
+                  onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-flex items-center gap-2 text-primary font-semibold hover:text-rose-600 transition-colors"
+                >
                   무료로 시작하기{" "}
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </button>
