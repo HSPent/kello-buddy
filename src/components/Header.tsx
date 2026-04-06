@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
+import { User } from "@supabase/supabase-js";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
-    const [user, setUser] = useState<{ id?: string, [key: string]: unknown } | null>(null);
+    const [user, setUser] = useState<User | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
@@ -41,10 +42,10 @@ const Header = () => {
     };
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border shadow-sm">
-            <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-                <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                    <span className="text-2xl font-black bg-clip-text text-transparent" style={{ backgroundImage: "var(--kello-gradient-hero)" }}>Kello</span>
+        <header className="fixed top-0 left-0 w-full z-50 bg-transparent">
+            <div className="container mx-auto px-6 h-14 md:h-16 flex items-center justify-between">
+                <div className="flex items-center">
+                    {/* Logo removed as requested */}
                 </div>
                 
                 {/* Desktop Menu */}
@@ -68,18 +69,38 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Mobile Nav Dropdown */}
+            {/* Mobile Nav Dropdown - Miniaturized Version (50% scale feel) */}
             {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b border-border shadow-md py-4 px-6 flex flex-col gap-4 animate-in slide-in-from-top-2">
-                    <button onClick={() => scrollToSection('service')} className="text-left text-base font-semibold text-foreground/80 hover:text-primary py-2 border-b border-border/40">서비스소개</button>
-                    <button onClick={() => scrollToSection('benefits')} className="text-left text-base font-semibold text-foreground/80 hover:text-primary py-2 border-b border-border/40">파트너 혜택</button>
-                    <button onClick={() => scrollToSection('faq')} className="text-left text-base font-semibold text-foreground/80 hover:text-primary py-2 border-b border-border/40">FAQ</button>
-                    <button 
-                        onClick={() => scrollToSection('apply')} 
-                        className="text-center text-base font-bold bg-primary text-primary-foreground px-4 py-3 rounded-full hover:bg-primary/90 transition-colors mt-2"
+                <div className="md:hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/10 backdrop-blur-[1px]">
+                    <div 
+                        className="w-[60%] max-w-[240px] bg-background rounded-xl shadow-2xl p-4 flex flex-col gap-2 animate-in fade-in zoom-in-90 duration-200 border border-border/50 relative"
+                        onClick={(e) => e.stopPropagation()}
                     >
-                        파트너 신청하기
-                    </button>
+                        {/* Header inside the small menu */}
+                        <div className="flex items-center justify-end mb-1 border-b border-border/30 pb-2">
+                            {/* Logo removed for consistency */}
+                            <button onClick={() => setIsMobileMenuOpen(false)} className="hover:bg-muted p-1 rounded-md transition-colors">
+                                <X className="w-4 h-4 text-foreground/70" />
+                            </button>
+                        </div>
+
+                        {/* Mini Menu Items */}
+                        <div className="flex flex-col">
+                            <button onClick={() => scrollToSection('service')} className="text-left text-[13px] font-bold text-foreground/80 hover:text-primary py-2 px-1 hover:bg-muted/30 transition-colors border-b border-border/10">서비스소개</button>
+                            <button onClick={() => scrollToSection('benefits')} className="text-left text-[13px] font-bold text-foreground/80 hover:text-primary py-2 px-1 hover:bg-muted/30 transition-colors border-b border-border/10">파트너 혜택</button>
+                            <button onClick={() => scrollToSection('faq')} className="text-left text-[13px] font-bold text-foreground/80 hover:text-primary py-2 px-1 hover:bg-muted/30 transition-colors border-b border-border/10">FAQ</button>
+                        </div>
+
+                        {/* Compact Button */}
+                        <button 
+                            onClick={() => scrollToSection('apply')} 
+                            className="text-center text-[13px] font-bold bg-primary text-primary-foreground px-3 py-2.5 rounded-lg hover:bg-primary/90 transition-all shadow-sm active:scale-95 mt-1"
+                        >
+                            파트너 신청하기
+                        </button>
+                    </div>
+                    {/* Background overlay to close */}
+                    <div className="absolute inset-0 -z-10" onClick={() => setIsMobileMenuOpen(false)} />
                 </div>
             )}
         </header>

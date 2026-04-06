@@ -250,7 +250,7 @@ const KBeautyTrendSection = () => {
               글로벌 관광객 유입과 <br className="sm:hidden" /> <span className="text-primary italic">K-뷰티 소비 트렌드</span>
             </h2>
             <p className="text-lg sm:text-xl font-bold text-muted-foreground/80 break-keep">
-              외국인 관광객의 미용 서비스 이용 현황 및 지출 분석
+              외국인 관광객의 뷰티 서비스 이용 현황 및 지출 분석
             </p>
           </div>
         </ScrollReveal>
@@ -263,6 +263,19 @@ const KBeautyTrendSection = () => {
             return (
               <ScrollReveal key={i} delay={i * 0.1} width="100%">
                 <motion.div
+                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                  whileInView={{ 
+                    opacity: 1, 
+                    y: 0, 
+                    scale: 1 
+                  }}
+                  viewport={{ once: true, margin: "-120px", amount: 0.2 }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 85, 
+                    damping: 18, 
+                    delay: i * 0.18 // Fine-tuned for Lottie-style stagger
+                  }}
                   animate={isActive ? { 
                     scale: 1.04, 
                     y: -8,
@@ -276,7 +289,6 @@ const KBeautyTrendSection = () => {
                     borderColor: "rgba(255,255,255,1)",
                     zIndex: 10
                   }}
-                  transition={{ type: "spring", stiffness: 450, damping: 25 }}
                   className="w-full h-[420px] flex flex-col items-center bg-white/95 backdrop-blur-xl rounded-[2.5rem] p-6 lg:p-8 border shadow-sm group relative"
                 >
                   {isActive && (

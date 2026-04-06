@@ -10,7 +10,7 @@ const HeroSection = () => {
       {/* Top Image Area */}
       <div className="relative w-full h-[35vh] sm:h-[45vh] lg:h-[55vh]">
         <img 
-          src="/KELLO.png" 
+          src="/Kello_image.png" 
           alt="KELLO 브랜드 이미지" 
           className="w-full h-full object-cover"
         />
@@ -30,20 +30,20 @@ const HeroSection = () => {
 
 
             <ScrollReveal delay={0.4}>
-              <h1 className="text-[20px] sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight mb-16 break-keep drop-shadow-xl text-center flex flex-col items-center">
-                <div className="flex items-center gap-2 sm:gap-4 mb-4 whitespace-nowrap px-4 scale-[0.8] sm:scale-[0.95] origin-center">
+              <h1 className="text-[26px] sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-[1.3] mb-10 sm:mb-16 break-keep text-center flex flex-col items-center">
+                <div className="flex flex-wrap items-center justify-center gap-2 mb-3 sm:mb-4 px-4">
                   <span className="text-black">
                     <span className="text-primary">K</span> - beauty의 첫 H<span className="text-primary">e</span><span className="text-primary">ll</span><span className="text-primary">o</span>
                   </span>
                   <img 
                     src="/content.png" 
                     alt="Kello Hand" 
-                    className="h-10 w-10 sm:h-24 sm:w-24 md:h-28 md:w-28 drop-shadow-lg animate-bounce-subtle shrink-0"
+                    className="h-8 w-8 sm:h-24 sm:w-24 md:h-28 md:w-28 drop-shadow-lg animate-bounce-subtle shrink-0"
                     onError={(e) => (e.currentTarget.style.display = 'none')}
                   />
                 </div>
-                <span className="block text-black px-4 whitespace-nowrap scale-[0.9] sm:scale-100 origin-center mt-4 sm:mt-6">
-                  이제, 외국인 손님이 <span className="text-primary">매출</span>이 됩니다
+                <span className="block text-black px-4 mt-2 sm:mt-6 sm:text-auto break-keep">
+                  이제, 외국인 손님이<br className="sm:hidden" /> <span className="text-primary">매출</span>이 됩니다
                 </span>
               </h1>
             </ScrollReveal>
