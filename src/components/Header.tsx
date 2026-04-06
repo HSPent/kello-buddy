@@ -45,7 +45,6 @@ const Header = () => {
         <header className="fixed top-0 left-0 w-full z-50 bg-transparent">
             <div className="container mx-auto px-6 h-14 md:h-16 flex items-center justify-between">
                 <div className="flex items-center">
-                    {/* Logo removed as requested */}
                 </div>
                 
                 {/* Desktop Menu */}
@@ -76,9 +75,7 @@ const Header = () => {
                         className="w-[60%] max-w-[240px] bg-background rounded-xl shadow-2xl p-4 flex flex-col gap-2 animate-in fade-in zoom-in-90 duration-200 border border-border/50 relative"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Header inside the small menu */}
                         <div className="flex items-center justify-end mb-1 border-b border-border/30 pb-2">
-                            {/* Logo removed for consistency */}
                             <button onClick={() => setIsMobileMenuOpen(false)} className="hover:bg-muted p-1 rounded-md transition-colors">
                                 <X className="w-4 h-4 text-foreground/70" />
                             </button>
