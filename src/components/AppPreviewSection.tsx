@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   CalendarCheck,
@@ -57,7 +57,19 @@ type TabId = (typeof TABS)[number]["id"];
 
 // ── 메인 섹션 ─────────────────────────────────────────────────────────────────
 const AppPreviewSection = () => {
-  const [activeTab, setActiveTab] = useState<TabId>("analytics");
+  const [activeTab, setActiveTab] = useState<TabId>("reservation");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTab((prev) => {
+        const currentIndex = TABS.findIndex((tab) => tab.id === prev);
+        const nextIndex = (currentIndex + 1) % TABS.length;
+        return TABS[nextIndex].id;
+      });
+    }, 2000); // 2초마다 자동 전환
+
+    return () => clearInterval(interval);
+  }, [activeTab]); // activeTab이 바뀔 때마다 타이머 리셋
 
   const current = TABS.find((t) => t.id === activeTab)!;
 
